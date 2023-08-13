@@ -22,7 +22,12 @@ export default function Home() {
               <button className="bg-amber-400 py-3 px-7 rounded-sm text-sm hover:bg-amber-500" type="button">지금 시작하기</button>
             </div>
           </div>
-          <Image src="/images/human_man1.svg" alt="보안솔루션 이미지" width={300} height={300} />
+          <Image
+            src="/images/human_man1.svg"
+            alt="보안솔루션 이미지"
+            width={300}
+            height={300}
+          />
         </div>
       </section>
       <section className="w-7xl items-center flex flex-col py-10">
@@ -72,7 +77,7 @@ export default function Home() {
       </section>
       <section className="bg-zinc-100 w-full items-center flex flex-col">
         <div className="w-7xl py-5 px-20 flex">
-          <Image src="/images/gungye_black.jpg" alt="궁예 이미지" width={300} height={300} />
+          <Image src="/images/gungye_black.jpg" alt="궁예 이미지" width={300} height={230} />
           <div className="flex justify-center items-center ps-20">
             <p className="text-4xl leading-relaxed italic">
               &quot;Who was that?.. Who just caughted?&quot;
@@ -85,7 +90,7 @@ export default function Home() {
       <section className="w-full items-center flex flex-col py-10">
         <ul className="w-7xl">
           <li className="flex px-20 py-10">
-            <Image src="/images/human_woman2.svg" alt="알림 이미지" width={300} height={300} />
+            <Image src="/images/human_woman2.svg" alt="알림 이미지" width={300} height={252} />
             <div className="flex flex-col justify-center p-24">
               <h1 className="text-3xl">수상한 소리가 나면 주인한테 알려줘요</h1>
               <p>일정 수준 이상의 소리가 나면 주인의 핸드폰으로 알림 메시지를 보냅니다.</p>
@@ -99,10 +104,10 @@ export default function Home() {
                 통해 어떤 상황인지 유추해낼 수 있어요.
               </p>
             </div>
-            <Image src="/images/human_woman1.svg" alt="녹음 이미지" width={300} height={300} />
+            <Image src="/images/human_woman1.svg" alt="녹음 이미지" width={300} height={276} />
           </li>
           <li className="flex px-20 py-10">
-            <Image src="/images/human_man2.svg" alt="분석 이미지" width={300} height={300} />
+            <Image src="/images/human_man2.svg" alt="분석 이미지" width={300} height={252} />
             <div className="flex flex-col justify-center p-24">
               <h1 className="text-3xl">언제 어디서 소리가 났는지 볼 수 있어요</h1>
               <p>기기를 여러 곳에 설치해도 어디서 무슨 소리가 났는지 확인 가능해요.</p>
