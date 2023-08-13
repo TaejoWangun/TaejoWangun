@@ -1,5 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import Image from 'next/image';
-import { HomeIcon, BuildingOffice2Icon, BuildingStorefrontIcon } from '@heroicons/react/24/outline';
+import {
+  HomeIcon, BuildingOffice2Icon, BuildingStorefrontIcon,
+  DevicePhoneMobileIcon, DeviceTabletIcon, ComputerDesktopIcon, VideoCameraIcon, ArrowLongRightIcon,
+} from '@heroicons/react/24/outline';
 
 export default function Home() {
   return (
@@ -106,31 +110,118 @@ export default function Home() {
           </li>
         </ul>
       </section>
-      <section>
-        <h1>
-          E-Waste를 줄여서
-          {' '}
-          <span>지구를 지켜주세요</span>
+      <section className="bg-zinc-100 w-full items-center flex flex-col py-16">
+        <div className="w-7xl px-20 grid grid-cols-2">
+          <div className="flex flex-col justify-center gap-5">
+            <h1 className="text-3xl">
+              E-Waste를 줄여서
+              <span className="text-amber-400">
+                {' '}
+                지구를
+                <br />
+                지켜주세요
+              </span>
+            </h1>
+            <p>
+              저희 솔루션은 CCTV 같은 다른 보안 기기와는 다르게 따로 하드웨어를 사
+              <br />
+              지 않고 집에서 더 이상 사용되지 않고 버려졌을 기기들을 사용할 수 있는
+              <br />
+              친환경적인 솔루션이에요.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-center pb-5">전세계에서 매년 폐기되는 전자기기</h2>
+            <ul className="grid grid-cols-2 gap-10">
+              <li className="flex gap-4">
+                <DevicePhoneMobileIcon width={40} />
+                <div>
+                  <h3 className="text-3xl text-amber-400">
+                    5.3B
+                  </h3>
+                  <p>
+                    Phones
+                  </p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <ComputerDesktopIcon width={40} />
+                <div>
+                  <h3 className="text-3xl text-amber-400">
+                    410M
+                  </h3>
+                  <p>
+                    PCs
+                  </p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <DeviceTabletIcon width={40} />
+                <div>
+                  <h3 className="text-3xl text-amber-400">
+                    100M
+                  </h3>
+                  <p>
+                    Tablets
+                  </p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <VideoCameraIcon width={40} />
+                <div>
+                  <h3 className="text-3xl text-amber-400">
+                    1M
+                  </h3>
+                  <p>
+                    CCTVs
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section className="pt-5 pb-20">
+        <h1 className="text-center text-3xl py-5">문의하기</h1>
+        <form action="submit" className="flex flex-col gap-5" style={{ width: '600px' }}>
+          <div className="flex gap-5">
+            <label className="basis-1/2">
+              이름
+              <input className="grow border rounded-md border-black w-full p-2" type="text" />
+            </label>
+            <label className="basis-1/2">
+              이메일
+              <input className="border rounded-md border-black w-full p-2" type="text" />
+            </label>
+          </div>
+          <label>
+            문의 카테고리
+            <select className="border rounded-md border-black w-full p-2">
+              <option value="">카테고리 선택</option>
+            </select>
+          </label>
+          <label>
+            문의내용
+            <textarea className="border rounded-md border-black w-full p-2" placeholder="무엇을 도와드릴까요?" rows={5} />
+          </label>
+          <div className="text-center">
+            <button type="button" className="py-2 px-14 bg-amber-400 rounded-md hover:bg-amber-500">보내기</button>
+          </div>
+        </form>
+      </section>
+      <section className="bg-zinc-100 w-full text-center py-6">
+        <h1 className="text-6xl">
+          세상에서 가장 간편한 보안, 지금
+          <br />
+          경험해보세요!
         </h1>
-        <p>
-          저희 솔루션은 CCTV 같은 다른 보안 기기와는 다르게 따로 하드웨어를 사지
-          않고 집에서 더 이상 사용되지 않고 버려졌을 기기들을 사용할 수 있는 친환경적인 술루션이에요.
-        </p>
-        <div>
-          <h2>전세계에서 폐기되는 전자기기</h2>
-          <ul>
-            <li>
-              <div>
-                <h3>
-                  5.3B
-                </h3>
-                <p>
-                  Phones
-                </p>
-              </div>
-            </li>
-          </ul>
-
+        <div className="text-center py-10">
+          <button type="button" className="py-2 px-6 bg-amber-400 rounded-md hover:bg-amber-500">
+            <span className="flex gap-2">
+              지금 시작하기
+              <ArrowLongRightIcon width={20} />
+            </span>
+          </button>
         </div>
       </section>
     </main>
