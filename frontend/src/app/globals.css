@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.w-7xl {
+  width: 1280px;
+}
+
+.min-w-7xl {
+  min-width: 1280px;
+}
