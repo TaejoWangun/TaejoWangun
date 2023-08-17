@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center justify-center bg-primary">
+    <footer className="flex flex-col items-center justify-center bg-primary min-w-7xl">
       <Link href="/" className="p-20">
         <Image src="/images/logo_mark.svg" alt="로고" width={300} height={300} />
       </Link>
