@@ -87,7 +87,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="w-full items-center flex flex-col py-10">
+      <section id="introduce" className="w-full items-center flex flex-col py-10">
         <ul className="w-7xl">
           <li className="flex px-20 py-10">
             <Image src="/images/human_woman2.svg" alt="알림 이미지" width={300} height={252} />
@@ -186,7 +186,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="pt-5 pb-20">
+      <section id="ask" className="pt-5 pb-20">
         <h1 className="text-center text-3xl py-5">문의하기</h1>
         <form action="submit" className="flex flex-col gap-5" style={{ width: '600px' }}>
           <div className="flex gap-5">
@@ -214,8 +214,8 @@ export default function Home() {
           </div>
         </form>
       </section>
-      <section className="bg-zinc-100 w-full text-center py-6">
-        <h1 className="text-6xl">
+      <section className="bg-zinc-100 w-full text-center pt-14 pb-6 ">
+        <h1 className="text-6xl leading-snug">
           세상에서 가장 간편한 보안, 지금
           <br />
           경험해보세요!
