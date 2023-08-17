@@ -7,9 +7,9 @@ import {
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center min-w-7xl">
+    <main className="flex flex-col items-center min-w-desktop">
       <section className="bg-zinc-100 w-full items-center flex flex-col py-10">
-        <div className="flex justify-between w-7xl p-20">
+        <div className="flex flex-col sm:flex-row justify-between w-desktop p-20">
           <div className="flex flex-col justify-between">
             <h1 className="text-5xl">
               소리로 우리집 안전을
@@ -18,7 +18,7 @@ export default function Home() {
               <span className="text-amber-400"> 보안 솔루션</span>
             </h1>
             <p>수상한 소리를 감지하면 바로 알려줘요!</p>
-            <div>
+            <div className="flex justify-center sm:justify-start">
               <button className="bg-amber-400 py-3 px-7 rounded-sm text-sm hover:bg-amber-500" type="button">지금 시작하기</button>
             </div>
           </div>
@@ -30,7 +30,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="w-7xl items-center flex flex-col py-10">
+      <section className="w-desktop items-center flex flex-col py-10">
         <h1 className="text-3xl">
           이런 분들에게 유용하게 쓰일 수 있어요!
         </h1>
@@ -76,10 +76,10 @@ export default function Home() {
         </ul>
       </section>
       <section className="bg-zinc-100 w-full items-center flex flex-col">
-        <div className="w-7xl py-5 px-20 flex">
+        <div className="w-desktop py-5 px-20 flex sm:flex-row flex-col">
           <Image src="/images/gungye_black.jpg" alt="궁예 이미지" width={300} height={230} />
           <div className="flex justify-center items-center ps-20">
-            <p className="text-4xl leading-relaxed italic">
+            <p className="sm:text-4xl leading-relaxed italic">
               &quot;Who was that?.. Who just caughted?&quot;
               <br />
               - Gung Ye(867~918)
@@ -88,27 +88,27 @@ export default function Home() {
         </div>
       </section>
       <section id="introduce" className="w-full items-center flex flex-col py-10">
-        <ul className="w-7xl">
-          <li className="flex px-20 py-10">
+        <ul className="w-desktop">
+          <li className="flex px-20 py-10 flex-col sm:flex-row">
             <Image src="/images/human_woman2.svg" alt="알림 이미지" width={300} height={252} />
-            <div className="flex flex-col justify-center p-24">
+            <div className="flex flex-col justify-center sm:p-24">
               <h1 className="text-3xl">수상한 소리가 나면 주인한테 알려줘요</h1>
               <p>일정 수준 이상의 소리가 나면 주인의 핸드폰으로 알림 메시지를 보냅니다.</p>
             </div>
           </li>
-          <li className="flex px-20 py-10">
-            <div className="flex flex-col justify-center p-24">
+          <li className="flex px-20 py-10 flex-col sm:flex-row-reverse">
+            <Image src="/images/human_woman1.svg" alt="녹음 이미지" width={300} height={276} />
+            <div className="flex flex-col justify-center sm:p-24">
               <h1 className="text-3xl">무슨 소리가 났었는지 확인 할 수 있어요</h1>
               <p>
                 알림 메시지를 누르고 재생 버튼을 누르면, 어떤 소리가 났었는지 녹음된 내용을 다시 들을 수 있고 이를
                 통해 어떤 상황인지 유추해낼 수 있어요.
               </p>
             </div>
-            <Image src="/images/human_woman1.svg" alt="녹음 이미지" width={300} height={276} />
           </li>
-          <li className="flex px-20 py-10">
+          <li className="flex px-20 py-10 flex-col sm:flex-row">
             <Image src="/images/human_man2.svg" alt="분석 이미지" width={300} height={252} />
-            <div className="flex flex-col justify-center p-24">
+            <div className="flex flex-col justify-center sm:p-24">
               <h1 className="text-3xl">언제 어디서 소리가 났는지 볼 수 있어요</h1>
               <p>기기를 여러 곳에 설치해도 어디서 무슨 소리가 났는지 확인 가능해요.</p>
             </div>
@@ -116,7 +116,7 @@ export default function Home() {
         </ul>
       </section>
       <section className="bg-zinc-100 w-full items-center flex flex-col py-16">
-        <div className="w-7xl px-20 grid grid-cols-2">
+        <div className="w-desktop px-20 grid grid-cols-2">
           <div className="flex flex-col justify-center gap-5">
             <h1 className="text-3xl">
               E-Waste를 줄여서
@@ -188,7 +188,7 @@ export default function Home() {
       </section>
       <section id="ask" className="pt-5 pb-20">
         <h1 className="text-center text-3xl py-5">문의하기</h1>
-        <form action="submit" className="flex flex-col gap-5" style={{ width: '600px' }}>
+        <form action="submit" className="flex flex-col gap-5 w-tablet">
           <div className="flex gap-5">
             <label className="basis-1/2">
               이름

@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.w-7xl {
-  width: 1280px;
-}
+@media (min-width: 640px) {
+  .w-desktop {
+    width: 1280px;
+  }
+  
+  .min-w-desktop {
+    min-width: 1280px;
+  }
 
-.min-w-7xl {
-  min-width: 1280px;
+  .w-tablet {
+    width: 640px;
+  }
 }

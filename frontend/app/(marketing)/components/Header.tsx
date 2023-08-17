@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="bg-zinc-100 flex justify-center min-w-7xl">
-      <div className="w-7xl flex justify-between items-center pt-5 px-20">
+    <header className="bg-zinc-100 flex justify-center min-w-desktop">
+      <div className="w-desktop flex justify-between items-center pt-5 px-20">
         <Link href="/">
           <Image src="/images/logo_mark.svg" alt="로고" width={300} height={300} />
         </Link>
