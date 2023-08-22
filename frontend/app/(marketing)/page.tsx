@@ -4,6 +4,7 @@ import {
   HomeIcon, BuildingOffice2Icon, BuildingStorefrontIcon,
   DevicePhoneMobileIcon, DeviceTabletIcon, ComputerDesktopIcon, VideoCameraIcon, ArrowLongRightIcon,
 } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
             </h1>
             <p className="pt-3 pb-10 sm:py-10 text-zinc-800">수상한 소리를 감지하면 바로 알려줘요!</p>
             <div className="flex justify-center sm:justify-start">
-              <button className="bg-amber-400 py-3 px-7 rounded-sm text-sm hover:bg-amber-500" type="button">지금 시작하기</button>
+              <Link href="/dashboard/device-mode" className="bg-amber-400 py-3 px-7 rounded-sm text-sm hover:bg-amber-500">지금 시작하기</Link>
             </div>
           </div>
           <div className="grow relative flex items-end h-48 sm:h-auto">

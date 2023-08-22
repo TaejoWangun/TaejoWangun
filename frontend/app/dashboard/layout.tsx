@@ -1,4 +1,5 @@
 import SideNav from './components/SideNav';
+import BottomNav from './components/BottomNav';
 
 export default function MyFormsLayout({
   children,
@@ -6,9 +7,10 @@ export default function MyFormsLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <SideNav />
+    <div className="flex h-screen flex-col sm:flex-row justify-between sm:justify-normal">
+      <SideNav className="hidden sm:block" />
       {children}
-    </>
+      <BottomNav className="block sm:hidden" />
+    </div>
   );
 }
