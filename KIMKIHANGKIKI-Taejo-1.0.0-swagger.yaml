@@ -13,11 +13,17 @@ tags:
   - name: auth
     description: 로그인, 로그아웃, 토큰 리프레시 등
   - name: users
-    description: 회원가입, 정보 수정 등
+    description: 회원가입, 정보 수정, 기기목록, 추가, 업데이트, 제거, 유저별 알림 목록, 제거 등
   - name: devices
-    description : 기기목록, 추가, 제거 등
+    description : 기기별 알림 목록, 상세 내역 등
+  - name: notifications
+    description: 소리 알림, 문의 답변 알림, 읽음, 삭제 등
+  - name: admin
+    description: 관리자 페이지. 문의 및 회원 관리.
   - name: contacts
     description: 문의 내용
+  - name: websockets
+    description: 감지 모드 중 녹음 상태, 녹음 작동 시간, 알림 카운트를 웹소켓으로 구현
 security: 
   - {}
   - JWT: []
@@ -486,11 +492,6 @@ paths:
                 type: array
                 items:
                   $ref: ''
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: ''
         '400':
           description: . . . .Invalid status value
           content:
@@ -540,11 +541,6 @@ paths:
           description: . . . .successful operation
           content:
             application/json:
-              schema:
-                type: array
-                items:
-                  $ref: ''
-            application/xml:
               schema:
                 type: array
                 items:
@@ -602,7 +598,243 @@ paths:
             application/json:
               schema:
                 $ref: ''
-            application/xml:
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+  /api/devices:
+    get:
+      tags:
+        - devices
+      summary: 기기목록 보기
+      operationId: getAllDevices
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/200'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+  
+    post:
+      tags:
+        - devices
+      summary: 기기 추가
+      operationId: createDevice
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+              
+  /api/devices/{deviceId}:
+    put:
+      tags:
+        - devices
+      summary: 기기 업데이트
+      operationId: updateDevice
+      parameters:
+        - name: deviceId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/200'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+  
+  
+    delete:
+      tags:
+        - devices
+      summary: 기기 삭제
+      operationId: deleteDevice
+      parameters:
+        - name: deviceId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 10
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
               schema:
                 $ref: ''
         '400':
@@ -644,14 +876,14 @@ paths:
       security:
         - JWT: []
 
-  /api/users/{userId}/devices:
+  /api/devices/{deviceId}/notifications:
     get:
       tags:
-        - users
-      summary: 기기목록 보기
-      operationId: getAllDevices
+        - devices
+      summary: 기기별 알림 목록 보기
+      operationId: getAllDeviceNotifications
       parameters:
-        - name: userId
+        - name: deviceId
           in: path
           description: . . . .ID of pet that needs to be fetched
           required: true
@@ -665,73 +897,6 @@ paths:
           description: . . . .successful operation
           content:
             application/json:
-              schema:
-                $ref: ''
-            application/xml:
-              schema:
-                $ref: ''
-        '400':
-          description: . . . .Invalid ID supplied
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '401':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '403':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-      security:
-        - JWT: []
-  
-    post:
-      tags:
-        - users
-      summary: 기기 추가
-      operationId: createDevice
-      parameters:
-        - name: userId
-          in: path
-          description: . . . .ID of pet that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100000
-      responses:
-        '200':
-          description: . . . .successful operation
-          content:
-            application/json:
-              schema:
-                $ref: ''
-            application/xml:
               schema:
                 $ref: ''
         '400':
@@ -753,7 +918,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/401'
                 properties:
                   debugMessage:
                     type: object
@@ -765,299 +930,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-      security:
-        - JWT: []
-      requestBody:
-        content:
-          application/octet-stream:
-            schema:
-              type: string
-              format: binary
-              
-  /api/users/{userId}/devices/{deviceId}:
-    put:
-      tags:
-        - users
-      summary: 기기 업데이트
-      operationId: updateDevice
-      parameters:
-        - name: userId
-          in: path
-          description: . . . .ID of pet that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100000      
-        - name: deviceId
-          in: path
-          description: . . . .ID of pet that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100000
-      responses:
-        '200':
-          description: . . . .successful operation
-          content:
-            application/json:
-              schema:
-                $ref: ''
-            application/xml:
-              schema:
-                $ref: ''
-        '400':
-          description: . . . .Invalid ID supplied
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '401':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '403':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-      security:
-        - JWT: []
-      requestBody:
-        content:
-          application/octet-stream:
-            schema:
-              type: string
-              format: binary
-  
-  
-    delete:
-      tags:
-        - users
-      summary: 기기 삭제
-      operationId: deleteDevice
-      parameters:
-        - name: userId
-          in: path
-          description: . . . .ID of pet that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100000     
-        - name: deviceId
-          in: path
-          description: . . . .ID of pet that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 10
-      responses:
-        '200':
-          description: . . . .successful operation
-          content:
-            application/json:
-              schema:
-                $ref: ''
-            application/xml:
-              schema:
-                $ref: ''
-        '400':
-          description: . . . .Invalid ID supplied
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '401':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '403':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-      security:
-        - JWT: []
-
-
-  /api/users/{userId}/notifications:
-    get:
-      tags:
-        - users
-      summary: 유저별 알림 목록 보기
-      operationId: getAllUserNotifications
-      parameters:
-        - name: userId
-          in: path
-          description: . . . .ID of pet that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100000
-      responses:
-        '200':
-          description: . . . .successful operation
-          content:
-            application/json:
-              schema:
-                $ref: ''
-            application/xml:
-              schema:
-                $ref: ''
-        '400':
-          description: . . . .Invalid ID supplied
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '401':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '403':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-      security:
-        - JWT: []
-
-
-  /api/devices/{deviceId}/notifications:
-    get:
-      tags:
-        - users
-      summary: 기기별 알림 목록 보기
-      operationId: getAllDeviceNotifications
-      parameters:
-        - name: deviceId
-          in: path
-          description: . . . .ID of pet that needs to be fetched
-          required: true
-          schema:
-            type: integer
-            format: int64
-            minimum: 1
-            maximum: 100000
-      responses:
-        '200':
-          description: . . . .successful operation
-          content:
-            application/json:
-              schema:
-                $ref: ''
-            application/xml:
-              schema:
-                $ref: ''
-        '400':
-          description: . . . .Invalid ID supplied
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '401':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
-                properties:
-                  debugMessage:
-                    type: object
-                    default: null
-        '403':
-          description: . . . .Invalid tag value
-          content:
-            application/json:
-              schema:
-                type: object
-                allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/403'
                 properties:
                   debugMessage:
                     type: object
@@ -1086,9 +959,6 @@ paths:
             application/json:
               schema:
                 $ref: ''
-            application/xml:
-              schema:
-                $ref: ''
         '400':
           description: . . . .Invalid ID supplied
           content:
@@ -1108,7 +978,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/401'
                 properties:
                   debugMessage:
                     type: object
@@ -1120,7 +990,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/403'
                 properties:
                   debugMessage:
                     type: object
@@ -1166,9 +1036,6 @@ paths:
             application/json:
               schema:
                 $ref: ''
-            application/xml:
-              schema:
-                $ref: ''
         '400':
           description: . . . .Invalid ID supplied
           content:
@@ -1176,7 +1043,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/400'
                 properties:
                   debugMessage:
                     type: object
@@ -1188,7 +1055,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/401'
                 properties:
                   debugMessage:
                     type: object
@@ -1200,7 +1067,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/403'
                 properties:
                   debugMessage:
                     type: object
@@ -1208,12 +1075,1180 @@ paths:
       security:
         - JWT: []
 
-  
+  /api/devices/{deviceId}/mode:
+    get:
+      tags:
+        - devices
+      summary: 기기 모드 확인하기
+      operationId: checkMode
+      parameters:
+        - name: deviceId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+  /api/devices/{deviceId}/mode/detect:
+    put:
+      tags:
+        - devices
+      summary: 감지모드로 변경
+      operationId: detectMode
+      parameters:
+        - name: deviceId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+  /api/devices/{deviceId}/mode/alarm:
+    put:
+      tags:
+        - devices
+      summary: 알림모드로 변경
+      operationId: alarmMode
+      parameters:
+        - name: deviceId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+  /api/devices/{deviceId}/mode/detect/start:
+    put:
+      tags:
+        - devices
+      summary: 감지모드에서 녹음 시작
+      operationId: startRecording
+      parameters:
+        - name: deviceId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+  /api/devices/{deviceId}/mode/detect/stop:
+    put:
+      tags:
+        - devices
+      summary: 감지모드에서 녹음 종료
+      operationId: stopRecording
+      parameters:
+        - name: deviceId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+
+
+
+
+
+
+
+  /api/notifications:
+    get:
+      tags:
+        - notifications
+      summary: 유저의 모든 노티 목록
+      operationId: getAllUserNotifications
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+    delete:
+      tags:
+        - notifications
+      summary: 알림 전체 삭제
+      operationId: deleteAllNotification
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+  /api/notifications/batch:
+    delete:
+      tags:
+        - notifications
+      summary: 알림 다중 삭제
+      operationId: deleteANotification
+
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []     
+
+
+        
+  /api/notifications/{notificationId}/play:
+    put:
+      tags:
+        - notifications
+      summary: 소리 알림 재생
+      operationId: startPlaying
+      parameters:
+        - name: notificationId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []        
+        
+  /api/notifications/{notificationId}/stop:
+    put:
+      tags:
+        - notifications
+      summary: 소리 알림 정지
+      operationId: stopPlaying
+      parameters:
+        - name: notificationId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []                
+        
+  /api/notifications/sound:
+    get:
+      tags:
+        - notifications
+      summary: 소리 알림 전체 조회
+      operationId: getAllSoundNotifications
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []   
+        
+  /api/notifications/inquiry:
+    get:
+      tags:
+        - notifications
+      summary: 문의 답변 알림 전체 조회
+      operationId: getAllInquiryNotifications
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []   
+
+  /api/notifications/inquiry/{notificationId}:
+    get:
+      tags:
+        - notifications
+      summary: 문의 답변 알림 전체 조회
+      operationId: getInquiryNotification
+      parameters:
+        - name: notificationId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+
+  /api/notifications/inquiry/read:
+    put:
+      tags:
+        - notifications
+      summary: 문의 답변 알림 모두 읽음으로 처리
+      operationId: readAllInquiryNotification
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+  /api/notifications/inquiry/read/batch:
+    put:
+      tags:
+        - notifications
+      summary: 선택한 문의 답변 알림 읽음으로 처리
+      operationId: readSelectedInquiryNotification
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+
+
+
+
+
+
+  /api/admin/contacts:
+    get:
+      tags:
+        - admin
+      summary: 문의 전체 조회
+      operationId: readAllInquiry
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+  /api/admin/contacts/{inquiryId}:
+    get:
+      tags:
+        - admin
+      summary: 문의 전체 조회
+      operationId: checkInquiry
+      parameters:
+        - name: inquiryId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+    post:
+      tags:
+        - admin
+      summary: 답장 보내기
+      operationId: sendReply
+      parameters:
+        - name: inquiryId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+        
+    put:
+      tags:
+        - admin
+      summary: 문의 해결
+      operationId: markAsResolved
+      parameters:
+        - name: inquiryId
+          in: path
+          description: . . . .ID of pet that needs to be fetched
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+            maximum: 100000
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+        
+  /api/admin/contacts/batch: 
+    delete:
+      tags:
+        - admin
+      summary: 선택한 문의 삭제 처리
+      operationId: deleteSelectedInquiry
+      responses:
+        '200':
+          description: . . . .successful operation
+          content:
+            application/json:
+              schema:
+                $ref: ''
+        '400':
+          description: . . . .Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/400'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '401':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/401'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+        '403':
+          description: . . . .Invalid tag value
+          content:
+            application/json:
+              schema:
+                type: object
+                allOf:
+                  - $ref: '#/components/schemas/403'
+                properties:
+                  debugMessage:
+                    type: object
+                    default: null
+      security:
+        - JWT: []
+
+
+
+
+
+
+        
+
   /api/contacts:
     post:
       tags:
         - contacts
-      summary: 비회원 문의 내용
+      summary: 회원/비회원 문의하기
       operationId: nonUserContact
       requestBody:
         content:
@@ -1246,9 +2281,6 @@ paths:
             application/json:
               schema:
                 $ref: ''
-            application/xml:
-              schema:
-                $ref: ''
         '400':
           description: . . . .Invalid ID supplied
           content:
@@ -1268,7 +2300,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/401'
                 properties:
                   debugMessage:
                     type: object
@@ -1280,22 +2312,23 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/403'
                 properties:
                   debugMessage:
                     type: object
                     default: null
       security:
         - {}
+        - JWT: []
 
-  /api/contacts/{userId}:
-    post:
+  /ws/devices/{deviceId}:
+    get:
       tags:
-        - contacts
-      summary: 회원 문의 내용
-      operationId: UserContact
+        - websockets
+      summary: 웹소켓 메세지 받기
+      operationId: websocketMessage
       parameters:
-        - name: userId
+        - name: deviceId
           in: path
           description: . . . .ID of pet that needs to be fetched
           required: true
@@ -1304,34 +2337,13 @@ paths:
             format: int64
             minimum: 1
             maximum: 100000
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                categories:
-                  type: string
-                  enum:
-                    - TechnicalSupport
-                    - FeedbackAndSuggestion
-                    - ReportAProblemOrBuG
-                    - LegalAndCompliance
-                    - Other
-                    - PressAndMedia
-                content:
-                  type: string
-                  
       responses:
         '200':
           description: . . . .successful operation
           content:
             application/json:
               schema:
-                $ref: ''
-            application/xml:
-              schema:
-                $ref: ''
+                $ref: '#/components/schemas/DeviceStatus'
         '400':
           description: . . . .Invalid ID supplied
           content:
@@ -1351,7 +2363,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/401'
                 properties:
                   debugMessage:
                     type: object
@@ -1363,7 +2375,7 @@ paths:
               schema:
                 type: object
                 allOf:
-                  - $ref: '#/components/schemas/200'
+                  - $ref: '#/components/schemas/403'
                 properties:
                   debugMessage:
                     type: object
@@ -1373,6 +2385,15 @@ paths:
 
 components:
   schemas:
+    DeviceStatus:
+      type: object
+      properties:
+        status:
+          type: string
+        recordingTime:
+          type: string
+        alarmCount:
+          type: integer
     Token:
       type: object
       properties:
