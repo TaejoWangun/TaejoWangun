@@ -36,7 +36,7 @@ export default function FindPassword() {
           <button type="button" className="absolute top-5 right-4">
             <Image
               src="/images/eye_closed.svg"
-              alt="뜬눈 이미지"
+              alt="감은눈 이미지"
               width={24}
               height={24}
             />

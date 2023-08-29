@@ -11,7 +11,7 @@ export default function AuthLayout({
   const pathname = usePathname();
 
   return (
-    <div className="my-[168px] flex flex-col items-center ">
+    <div className="h-full w-full my-[168px] flex flex-col items-center ">
       {pathname === '/auth/complete-reset' ? (
         <Image
           src="/images/upload.svg"
