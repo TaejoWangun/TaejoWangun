@@ -49,7 +49,7 @@ export default function SideNav({ className }: { className: string }) {
       <ul className="text-white flex flex-col pt-10">
         {
           items.map((item) => (
-            <li className={item.liStyle}>
+            <li className={item.liStyle} key={item.href}>
               <Link href={item.href} className={pathname === item.href ? selectedStyle : linkStyle}>
                 {item.label}
               </Link>
