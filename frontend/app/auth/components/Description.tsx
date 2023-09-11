@@ -3,7 +3,5 @@ interface DescriptionProps {
 }
 
 export default function Description({ text }: DescriptionProps) {
-  return (
-    <h2 className="my-8 mx-5 text-sm sm:text-base text-[#828282] ">{text}</h2>
-  );
+  return <h2 className="text-xs sm:text-base mb-6 sm:mb-10 ">{text}</h2>;
 }

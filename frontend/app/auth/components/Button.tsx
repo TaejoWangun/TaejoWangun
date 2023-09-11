@@ -5,7 +5,7 @@ interface ButtonProps {
 export default function Button({ text }: ButtonProps) {
   return (
     <button
-      className="h-16 w-[300px] sm:w-[545px] rounded-md bg-[#FFC000] font-semibold"
+      className="w-[300px] sm:w-[580px] h-10 sm:h-16 bg-[#FFC000] rounded-full font-medium text-sm sm:text-xl mb-6 sm:mb-10"
       type="submit"
     >
       {text}

@@ -3,6 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useCallback } from 'react';
+import Header from '../components/Header';
+// import Description from '../components/Description';
+import Button from '../components/Button';
 import Modal from '../components/Modal';
 
 export default function SignUp() {
@@ -18,7 +21,7 @@ export default function SignUp() {
         <Modal toggleModal={toggleModal} text="이미 존재하는 아이디입니다." />
       )}
 
-      <h1 className="text-xl sm:text-3xl font-medium mt-2 mb-1">회원가입</h1>
+      <Header text="회원가입" />
 
       <h2 className="text-xs sm:text-base mb-6 sm:mb-10 flex">
         이미 계정이 있으신가요? &nbsp;
@@ -27,7 +30,7 @@ export default function SignUp() {
         </Link>
       </h2>
 
-      <form className="flex flex-col mb-10 gap-6 sm:gap-10">
+      <form className="flex flex-col mb-10 gap-4 sm:gap-6 ">
         <input
           type="text"
           placeholder="아이디"
@@ -55,12 +58,7 @@ export default function SignUp() {
           </button>
         </div>
 
-        <button
-          type="submit"
-          className="w-[300px] sm:w-[580px] h-10 sm:h-16 bg-[#FFC000] rounded-full font-medium text-sm sm:text-xl"
-        >
-          계정 등록
-        </button>
+        <Button text="계정 등록" />
       </form>
     </>
   );

@@ -3,6 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useCallback } from 'react';
+import Header from '../components/Header';
+import Description from '../components/Description';
+import Button from '../components/Button';
 import Modal from '../components/Modal';
 
 export default function SignIn() {
@@ -18,7 +21,8 @@ export default function SignIn() {
         <Modal toggleModal={toggleModal} text="존재하지 않는 유저입니다." />
       )}
 
-      <h1 className="text-xl sm:text-3xl font-medium mt-2 mb-8">로그인</h1>
+      <Header text="로그인" />
+      <Description text="" />
 
       <form className="flex flex-col">
         <input
@@ -55,12 +59,7 @@ export default function SignIn() {
           아이디 기억하기
         </label>
 
-        <button
-          type="submit"
-          className="w-[300px] sm:w-[580px] h-10 sm:h-16 bg-[#FFC000] rounded-full font-medium text-sm sm:text-xl mb-6 sm:mb-10"
-        >
-          로그인
-        </button>
+        <Button text="로그인" />
       </form>
 
       <span className="font-medium text-sm sm:text-xl pt-6 sm:pt-10 mb-4 border-t w-[300px] sm:w-[580px] text-center">
@@ -68,7 +67,7 @@ export default function SignIn() {
       </span>
       <Link
         href="signup"
-        className="w-[300px] sm:w-[580px] h-10 sm:h-1 rounded-full font-medium text-sm sm:text-xl mb-10 border border-black text-center leading-10 sm:leading-[60px]"
+        className="w-[300px] sm:w-[580px] h-10 sm:h-16 rounded-full font-medium text-sm sm:text-xl mb-10 border border-black text-center leading-10 sm:leading-[60px]"
       >
         회원가입
       </Link>

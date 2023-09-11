@@ -16,9 +16,9 @@ export default function AuthLayout({
         <Image
           src="/images/upload.svg"
           alt="업로드 이미지"
-          width={130}
-          height={130}
-          className="sm:w-[164px] sm:h-[164px]"
+          width={100}
+          height={100}
+          className="sm:w-[164px] sm:h-[164px] mb-1 sm:mb-6"
         />
       ) : (
         <Image

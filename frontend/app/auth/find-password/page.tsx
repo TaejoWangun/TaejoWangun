@@ -7,10 +7,10 @@ export default function FindPassword() {
     <>
       <Header text="비밀번호 찾기" />
       <Description text="비밀번호를 찾고자하는 이메일을 입력해주세요." />
-      <form className="flex flex-col">
-        <div className="mb-1 text-sm text-[#2F4858] ">E mail</div>
+      <form className="flex flex-col gap-4 sm:gap-6">
         <input
-          className="mb-6 h-16 w-[300px] sm:w-[545px] rounded-md border py-4 px-3"
+          placeholder="이메일"
+          className="w-[300px] sm:w-[580px] h-10 sm:h-16 py-2 sm:py-4 px-4 sm:px-6 border rounded-xl text-xs sm:text-base"
           type="email"
         />
         <Button text="다음" />
