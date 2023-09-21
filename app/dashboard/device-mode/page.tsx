@@ -1,7 +1,17 @@
+"use client";
+
+import { getToken } from "firebase/messaging";
+import { messaging } from "../../firbase";
+
 export default function DeviceMode() {
-  return (
-    <p>
-      DeviceMode
-    </p>
-  );
+  const apple = async () => {
+    const token = await getToken(messaging, {
+      vapidKey: process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY,
+    });
+    console.log("token", token);
+  };
+
+  apple();
+
+  return <p>DeviceMode</p>;
 }
