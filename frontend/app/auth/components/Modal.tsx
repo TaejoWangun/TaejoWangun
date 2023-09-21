@@ -2,17 +2,17 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 interface ModalProps {
-  toggleModal: () => void;
+  closeModal: () => void;
   text: string;
 }
 
-export default function Modal({ toggleModal, text }: ModalProps) {
+export default function Modal({ closeModal, text }: ModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = (e: any) => {
       if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        toggleModal();
+        closeModal();
       }
     };
 
@@ -37,7 +37,7 @@ export default function Modal({ toggleModal, text }: ModalProps) {
             height={32}
             className="sm:w-12 sm:h-12"
           />
-          <button type="button" onClick={toggleModal}>
+          <button type="button" onClick={closeModal}>
             <Image
               src="/images/close.svg"
               alt="닫기 이미지"
@@ -52,7 +52,7 @@ export default function Modal({ toggleModal, text }: ModalProps) {
         </h1>
         <button
           type="button"
-          onClick={toggleModal}
+          onClick={closeModal}
           className="bg-[#FFC000] w-full h-8 sm:h-11 rounded-lg"
         >
           확인

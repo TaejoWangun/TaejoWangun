@@ -11,19 +11,35 @@ export default function CertifyEmail() {
         <div className="flex gap-x-4 sm:gap-x-6">
           <input
             className="h-[48px] w-[48px] sm:h-[72px] sm:w-[72px] rounded-md border py-4 px-3 text-2xl sm:text-3xl text-center"
-            type="email"
+            type="tel"
+            maxLength={1}
+            min={1}
+            max={9}
+            required
           />
           <input
             className="h-[48px] w-[48px] sm:h-[72px] sm:w-[72px] rounded-md border py-4 px-3 text-2xl sm:text-3xl text-center"
-            type="email"
+            type="tel"
+            maxLength={1}
+            min={1}
+            max={9}
+            required
           />
           <input
             className="h-[48px] w-[48px] sm:h-[72px] sm:w-[72px] rounded-md border py-4 px-3 text-2xl sm:text-3xl text-center"
-            type="email"
+            type="tel"
+            maxLength={1}
+            min={1}
+            max={9}
+            required
           />
           <input
             className="h-[48px] w-[48px] sm:h-[72px] sm:w-[72px] rounded-md border py-4 px-3 text-2xl sm:text-3xl text-center"
-            type="email"
+            type="tel"
+            maxLength={1}
+            min={1}
+            max={9}
+            required
           />
         </div>
 

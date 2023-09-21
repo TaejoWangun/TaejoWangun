@@ -1,8 +1,13 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import Header from '../components/Header';
 import Description from '../components/Description';
 import Button from '../components/Button';
 
 export default function FindPassword() {
+  const router = useRouter();
+
   return (
     <>
       <Header text="비밀번호 변경 완료!" />
