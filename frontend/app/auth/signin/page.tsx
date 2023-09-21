@@ -42,7 +42,11 @@ export default function SignIn() {
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      signIn(userName, password);
+      if (password.length < 8 || password.length > 20) {
+        setModalText('비밀번호는 8~20 자리만 가능합니다.');
+      } else {
+        signIn(userName, password);
+      }
     },
     [userName, password],
   );
