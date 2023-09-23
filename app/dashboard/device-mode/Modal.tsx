@@ -1,21 +1,9 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
 
-/* eslint-disable max-len */
-export default function Modal({ show }: { show: boolean }) {
-  useEffect(() => {
-    if (show) {
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  });
-  return show && (
-    <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/30 flex items-center justify-center">
+export default function Modal() {
+  return (
+    <div className="open-modal fixed top-0 left-0 right-0 bottom-0 bg-black/30 flex items-center justify-center">
       <div className="max-w-2xl px-6">
         <div className="bg-white rounded-lg shadow">
           <section className="flex items-start justify-between p-4 rounded-t">
@@ -48,7 +36,6 @@ export default function Modal({ show }: { show: boolean }) {
             </button>
             <button type="button" className="btn-primary">
               네, 이 기존 기기로 등록할래요.
-
             </button>
           </section>
         </div>

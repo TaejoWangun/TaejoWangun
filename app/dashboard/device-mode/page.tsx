@@ -2,10 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Modal from './Modal';
 
-export default function DeviceMode({ searchParams }: any) {
+type Props = {
+  searchParams: Record<string, string> | null | undefined
+};
+export default function DeviceMode({ searchParams }: Props) {
+  const showModal = searchParams?.modal === 'true';
   return (
     <>
-      <Modal show={searchParams.modal === 'true'} />
+      {showModal && <Modal />}
       <div className="p-3 sm:p-7">
         <section>
           <div className="flex justify-between">
