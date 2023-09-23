@@ -29,7 +29,7 @@ const items = [
   },
 ];
 
-export default function SideNav({ className }: { className: string }) {
+export default function BottomNav({ className }: { className: string }) {
   const pathname = usePathname();
 
   return (
@@ -39,7 +39,7 @@ export default function SideNav({ className }: { className: string }) {
           items.map((item) => (
             pathname === item.href
               ? (
-                <li className="w-16">
+                <li key={item.label} className="w-16">
                   <Link
                     className="flex flex-col gap-1 w-full h-full items-center justify-center bg-[#e8ebd9] text-[#ffc000] border-t-4 border-[#ffc000]"
                     href={item.href}
@@ -49,7 +49,7 @@ export default function SideNav({ className }: { className: string }) {
                   </Link>
                 </li>
               ) : (
-                <li className="w-16">
+                <li key={item.label} className="w-16">
                   <Link
                     className="flex flex-col gap-1 w-full h-full items-center justify-center"
                     href={item.href}

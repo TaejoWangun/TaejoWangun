@@ -7,7 +7,7 @@ export default function Header() {
     <header className="bg-zinc-100 flex justify-center min-w-desktop">
       <div className="grow sm:grow-0 w-desktop flex justify-between items-center pt-5 px-5 sm:px-20">
         <Link href="/" className="relative flex w-40 sm:w-72 h-20">
-          <Image src="/images/logo_mark.svg" alt="로고" fill className="object-contain" />
+          <Image src="/images/logo_mark.svg" alt="로고" fill className="object-contain" priority />
         </Link>
         <div>
           <ul className="hidden sm:flex gap-7 items-center">
