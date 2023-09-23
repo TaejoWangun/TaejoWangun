@@ -1,31 +1,32 @@
 export default function HowToUse() {
   return (
-    <>
+    <div className="p-3 sm:p-7">
       <section>
-        <div>
-          <p>
+        <div className="flex justify-between">
+          <p className="text-letter text-xs sm:text-lg font-bold">
             이 기기는 등록되지 않은 기기입니다.
             <br />
             기기를 등록하지 않아도 알림 내역은 확인 가능합니다.
           </p>
-          <button type="button">
-            + 현재 기기 추가
-          </button>
+          <div className="shrink-0">
+            <button type="button" className="btn-primary">
+              + 현재 기기 추가
+            </button>
+          </div>
         </div>
       </section>
       <section>
-        <div>
-          <h1>사용방법</h1>
+        <div className="text-center pt-7">
+          <h1 className="text-base font-bold">사용방법</h1>
         </div>
         <ol>
-          <li>
-            <div>
-              <div>
-                <button type="button">+ 현재 기기 추가</button>
-                <img src="" alt="백그라운드" />
+          <li className="px-10 pt-5">
+            <div className="border rounded-md shadow-md px-3 py-5">
+              <div className="bg-[url(/images/howtouse.png)] bg-center bg-no-repeat h-24 flex justify-center items-center bg-contain">
+                <button className="btn-primary" type="button">+ 현재 기기 추가</button>
               </div>
-              <h2>현재 사용하시는 기기를 추가해주세요</h2>
-              <p>현재 사용하는 기기를 사용자의 기기목록에 추가하여 기기 관리를 할 수 있습니다.</p>
+              <h2 className="text-sm font-semibold text-main text-center pt-4 pb-2">현재 사용하시는 기기를 추가해주세요</h2>
+              <p className="text-xs font-normal text-center">현재 사용하는 기기를 사용자의 기기목록에 추가하여 기기 관리를 할 수 있습니다.</p>
             </div>
             <div>
               1
@@ -65,6 +66,6 @@ export default function HowToUse() {
         </ol>
 
       </section>
-    </>
+    </div>
   );
 }

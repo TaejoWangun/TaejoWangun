@@ -15,3 +15,7 @@
     width: 640px;
   }
 }
+
+.btn-primary {
+  @apply bg-main rounded py-2 px-1 sm:px-3 text-xs sm:text-lg text-letter font-bold
+}
