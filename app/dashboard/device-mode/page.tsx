@@ -1,5 +1,7 @@
 'use client';
 
+import HowToUse from './HowToUse';
+
 // import { getToken } from 'firebase/messaging';
 // import messaging from '../../firbase';
 
@@ -13,5 +15,5 @@ export default function DeviceMode() {
 
   apple();
 
-  return <p>DeviceMode</p>;
+  return <HowToUse />;
 }
