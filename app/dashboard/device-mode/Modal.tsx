@@ -23,15 +23,15 @@ export default function Modal() {
               <span className="sr-only">Close modal</span>
             </Link>
           </section>
-          <section className="">
+          <section className="p-4">
             <ul>
               <li>
-                ssss
+                Hansung PC
               </li>
             </ul>
           </section>
-          <section className="">
-            <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          <section className="grid grid-cols-2 p-4">
+            <button type="button" className="bg-white broder rounded-md p-2 text-xs">
               아니요, 새 기기로 등록할래요
             </button>
             <button type="button" className="btn-primary">
