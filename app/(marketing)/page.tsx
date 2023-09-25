@@ -221,12 +221,14 @@ export default function Home() {
           지금 경험해보세요!
         </h1>
         <div className="text-center py-10">
-          <button type="button" className="py-2 px-6 bg-amber-400 rounded-md hover:bg-amber-500">
-            <span className="flex gap-2">
-              지금 시작하기
-              <ArrowLongRightIcon width={20} />
-            </span>
-          </button>
+          <Link href="/dashboard/device-mode">
+            <button type="button" className="py-2 px-6 bg-amber-400 rounded-md hover:bg-amber-500">
+              <span className="flex gap-2">
+                지금 시작하기
+                <ArrowLongRightIcon width={20} />
+              </span>
+            </button>
+          </Link>
         </div>
       </section>
     </main>
