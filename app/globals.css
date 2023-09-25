@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width: 640px) {
+  .w-desktop {
+    width: 1280px;
+  }
+  
+  .min-w-desktop {
+    min-width: 1280px;
+  }
+
+  .w-tablet {
+    width: 640px;
+  }
+}
