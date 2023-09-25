@@ -113,7 +113,9 @@ export default function SignIn() {
           아이디 기억하기
         </label>
 
-        <Button text="로그인" />
+        <Link href="/dashboard/device-mode">
+          <Button text="로그인" />
+        </Link>
       </form>
 
       <span className="font-medium text-sm sm:text-xl pt-6 sm:pt-10 mb-4 border-t w-[300px] sm:w-[580px] text-center">

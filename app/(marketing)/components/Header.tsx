@@ -18,11 +18,11 @@ export default function Header() {
               <Link className="text-zinc-600 hover:font-black" href="/#ask">문의</Link>
             </li>
             <li>
-              <Link className="text-zinc-600 hover:font-black" href="/">로그인</Link>
+              <Link className="text-zinc-600 hover:font-black" href="/auth/signin">로그인</Link>
             </li>
             <li>
               <Link
-                href="/"
+                href="/auth/signup"
                 className="bg-amber-400 py-3 px-7 rounded-sm text-sm hover:bg-amber-500"
               >
                 회원가입
