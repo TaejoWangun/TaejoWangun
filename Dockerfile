@@ -10,9 +10,7 @@ RUN npm install
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY src ./src
-COPY public ./public
-COPY package.json next.config.js jsconfig.json ./
+COPY . .
 RUN npm run build
 
 # Stage 3: run
@@ -21,5 +19,5 @@ WORKDIR /app
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./
+COPY --from=builder /app/package.json ./package.json
 CMD ["npm", "run", "start"]
