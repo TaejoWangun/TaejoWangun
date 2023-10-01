@@ -1,12 +1,12 @@
-exports.id = 471;
-exports.ids = [471];
+exports.id = 876;
+exports.ids = [876];
 exports.modules = {
 
-/***/ 2791:
+/***/ 8107:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 1251));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 7504))
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 2567));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 1251))
 
 /***/ }),
 
@@ -98,7 +98,7 @@ function SideNav({ className }) {
 
 /***/ }),
 
-/***/ 7504:
+/***/ 2567:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";

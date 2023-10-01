@@ -1,0 +1,16 @@
+{
+  "/_not-found": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/(marketing)/page": "/",
+  "/auth/certify-email/page": "/auth/certify-email",
+  "/auth/find-password/page": "/auth/find-password",
+  "/auth/complete-reset/page": "/auth/complete-reset",
+  "/dashboard/device-mode/page": "/dashboard/device-mode",
+  "/auth/signup/page": "/auth/signup",
+  "/dashboard/device-list/page": "/dashboard/device-list",
+  "/dashboard/cs/page": "/dashboard/cs",
+  "/auth/signin/page": "/auth/signin",
+  "/dashboard/notice/page": "/dashboard/notice",
+  "/dashboard/my-page/page": "/dashboard/my-page",
+  "/auth/reset-password/page": "/auth/reset-password"
+}
