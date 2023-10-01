@@ -1,0 +1,16 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/(marketing)/page": "app/(marketing)/page.js",
+  "/auth/certify-email/page": "app/auth/certify-email/page.js",
+  "/auth/complete-reset/page": "app/auth/complete-reset/page.js",
+  "/auth/find-password/page": "app/auth/find-password/page.js",
+  "/auth/reset-password/page": "app/auth/reset-password/page.js",
+  "/auth/signup/page": "app/auth/signup/page.js",
+  "/auth/signin/page": "app/auth/signin/page.js",
+  "/dashboard/device-mode/page": "app/dashboard/device-mode/page.js",
+  "/dashboard/device-list/page": "app/dashboard/device-list/page.js",
+  "/dashboard/cs/page": "app/dashboard/cs/page.js",
+  "/dashboard/notice/page": "app/dashboard/notice/page.js",
+  "/dashboard/my-page/page": "app/dashboard/my-page/page.js"
+}
