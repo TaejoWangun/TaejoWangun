@@ -19,6 +19,6 @@ COPY package*.json .
 RUN npm install
 COPY .next ./.next
 COPY public ./public
-COPY node_modules ./node_modules
+#COPY node_modules ./node_modules
 #COPY /app/package.json ./package.json
 CMD ["npm", "run", "start"]
