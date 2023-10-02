@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Modal from './Modal';
+import DeviceList from './DeviceList';
 
 type Props = {
   searchParams: Record<string, string> | null | undefined
@@ -10,7 +11,11 @@ export default function DeviceMode({ searchParams }: Props) {
   console.log('DeviceMode rendered');
   return (
     <>
-      {showModal && <Modal />}
+      {showModal && (
+      <Modal>
+        <DeviceList />
+      </Modal>
+      )}
       <div className="p-3 sm:p-7">
         <section>
           <div className="flex justify-between">
