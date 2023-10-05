@@ -12,6 +12,7 @@ export default function FindPassword() {
           placeholder="이메일"
           className="w-[300px] sm:w-[580px] h-10 sm:h-16 py-2 sm:py-4 px-4 sm:px-6 border rounded-xl text-xs sm:text-base"
           type="email"
+          required
         />
         <Button text="다음" />
       </form>

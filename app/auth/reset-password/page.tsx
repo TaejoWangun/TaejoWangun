@@ -31,6 +31,7 @@ export default function FindPassword() {
             className="w-[300px] sm:w-[580px] h-10 sm:h-16 py-2 sm:py-4 px-4 sm:px-6 border rounded-xl text-xs sm:text-base"
             type={isVisible ? 'text' : 'password'}
             placeholder="문자, 숫자, 특수문자 포함 8~24자"
+            required
           />
           <button
             type="button"
@@ -61,6 +62,7 @@ export default function FindPassword() {
             className="w-[300px] sm:w-[580px] h-10 sm:h-16 py-2 sm:py-4 px-4 sm:px-6 border rounded-xl text-xs sm:text-base"
             type={isVisibleCh ? 'text' : 'password'}
             placeholder="문자, 숫자, 특수문자 포함 8~24자"
+            required
           />
           <button
             type="button"
