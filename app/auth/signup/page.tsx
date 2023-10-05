@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 import Modal from '../components/Modal';
 import { signUp } from '../../api/auth/auth';
+import validate from '../../lib/auth/validation';
 
 export default function SignUp() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -65,6 +66,11 @@ export default function SignUp() {
       if (password !== passwordCh) {
         setModalText('비밀번호가 일치하지 않습니다.');
         setModalOpen(true);
+        setPasswordCh('');
+      } else if (!validate(password)) {
+        setModalText('비밀번호는 문자, 숫자, 특수문자를 반드시 포함해야 합니다.');
+        setModalOpen(true);
+        setPassword('');
         setPasswordCh('');
       } else {
         signUp(userId, email, password);
