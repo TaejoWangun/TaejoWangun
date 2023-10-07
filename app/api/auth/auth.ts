@@ -8,7 +8,7 @@ export const signUp = async (
   password: string,
 ) => {
   try {
-    const response = await API.post('/auth/register', {
+    const response = await API.post('/users/direct', {
       userId,
       email,
       password,
@@ -27,12 +27,12 @@ export const signUp = async (
 
 export const signIn = async (username: string, password: string) => {
   try {
-    const response = await API.post('/auth/login', {
+    const response = await API.post('/auth/direct', {
       username,
       password,
     });
 
-    setToken({ key: 'accessToken', value: response.data.access_token });
+    setToken({ key: 'accessToken', value: response.data.accessToken });
 
     return response;
   } catch (e) {

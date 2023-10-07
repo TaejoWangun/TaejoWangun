@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import Modal from '../components/Modal';
@@ -18,6 +19,7 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordCh, setPasswordCh] = useState('');
+  const router = useRouter();
 
   const closeModal = useCallback(() => {
     setModalOpen(false);
@@ -73,10 +75,17 @@ export default function SignUp() {
         setPassword('');
         setPasswordCh('');
       } else {
-        signUp(userId, email, password);
+        signUp(userId, email, password)
+          .then((ressponse) => {
+            console.log(ressponse);
+            router.push('/auth/signin');
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     },
-    [userId, email, password, passwordCh],
+    [userId, email, password, passwordCh, router],
   );
 
   return (

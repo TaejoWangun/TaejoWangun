@@ -3,11 +3,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import Header from '../components/Header';
 import Description from '../components/Description';
 import Button from '../components/Button';
 import Modal from '../components/Modal';
 import { signIn } from '../../api/auth/auth';
+import getToken from '../../lib/auth/getToken';
 
 export default function SignIn() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -15,6 +17,7 @@ export default function SignIn() {
   const [isVisible, setIsVisible] = useState(false);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
   const closeModal = useCallback(() => {
     setModalOpen(!modalOpen);
@@ -42,13 +45,21 @@ export default function SignIn() {
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      if (password.length < 8 || password.length > 20) {
-        setModalText('비밀번호는 8~20 자리만 가능합니다.');
+      if (password.length <= 20) {
+        signIn(userName, password)
+          .then((response) => {
+            console.log(response);
+            console.log(getToken('accessToken'));
+            router.push('/');
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       } else {
-        signIn(userName, password);
+        setModalText('');
       }
     },
-    [userName, password],
+    [userName, password, router],
   );
 
   return (
@@ -113,9 +124,8 @@ export default function SignIn() {
           아이디 기억하기
         </label>
 
-        <Link href="/dashboard/device-mode">
-          <Button text="로그인" />
-        </Link>
+        <Button text="로그인" />
+
       </form>
 
       <span className="font-medium text-sm sm:text-xl pt-6 sm:pt-10 mb-4 border-t w-[300px] sm:w-[580px] text-center">
