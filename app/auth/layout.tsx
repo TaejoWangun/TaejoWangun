@@ -1,7 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import getToken from '../lib/auth/getToken';
 
 export default function AuthLayout({
   children,
@@ -9,6 +11,15 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = getToken('accessToken');
+
+    if (token !== null) {
+      router.push('/');
+    }
+  }, [router]);
 
   return (
     <div className="h-full w-full my-[168px] flex flex-col items-center ">
