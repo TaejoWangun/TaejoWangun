@@ -2,14 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '../components/Header';
 import Description from '../components/Description';
 import Button from '../components/Button';
 import Modal from '../components/Modal';
 import { signIn } from '../../api/auth/auth';
-import getToken from '../../lib/auth/getToken';
 
 export default function SignIn() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -69,14 +68,6 @@ export default function SignIn() {
     },
     [userName, password, router],
   );
-
-  useEffect(() => {
-    const token = getToken('accessToken');
-
-    if (token !== null) {
-      router.push('/');
-    }
-  }, [router]);
 
   return (
     <>
