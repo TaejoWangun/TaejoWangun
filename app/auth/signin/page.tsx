@@ -9,7 +9,6 @@ import Description from '../components/Description';
 import Button from '../components/Button';
 import Modal from '../components/Modal';
 import { signIn } from '../../api/auth/auth';
-import getToken from '../../lib/auth/getToken';
 
 export default function SignIn() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,12 +47,20 @@ export default function SignIn() {
       if (password.length <= 20) {
         signIn(userName, password)
           .then((response) => {
-            console.log(response);
-            console.log(getToken('accessToken'));
-            router.push('/');
+            if (response.status === 201) {
+              router.push('/');
+            } else {
+              setModalText('이메일 또는 비밀번호를 다시 확인해주세요.');
+              setModalOpen(true);
+              setUserName('');
+              setPassword('');
+            }
           })
           .catch((error) => {
-            console.log(error);
+            setModalText(error);
+            setModalOpen(true);
+            setUserName('');
+            setPassword('');
           });
       } else {
         setModalText('');

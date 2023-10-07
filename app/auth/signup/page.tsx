@@ -76,12 +76,25 @@ export default function SignUp() {
         setPasswordCh('');
       } else {
         signUp(userId, email, password)
-          .then((ressponse) => {
-            console.log(ressponse);
-            router.push('/auth/signin');
+          .then((response) => {
+            if (response.status === 201) {
+              router.push('/auth/signin');
+            } else {
+              setModalText('이메일 또는 비밀번호를 다시 확인해주세요.');
+              setModalOpen(true);
+              setUserId('');
+              setEmail('');
+              setPassword('');
+              setPasswordCh('');
+            }
           })
           .catch((error) => {
-            console.log(error);
+            setModalText(error);
+            setModalOpen(true);
+            setUserId('');
+            setEmail('');
+            setPassword('');
+            setPasswordCh('');
           });
       }
     },
