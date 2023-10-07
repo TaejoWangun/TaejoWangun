@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import Image from 'next/image';
 import {
@@ -5,8 +7,21 @@ import {
   DevicePhoneMobileIcon, DeviceTabletIcon, ComputerDesktopIcon, VideoCameraIcon, ArrowLongRightIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import getToken from '../lib/auth/getToken';
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = getToken('accessToken');
+
+    if (token === null) {
+      router.push('/auth/signin');
+    }
+  }, [router]);
+
   return (
     <main className="flex flex-col items-center min-w-desktop">
       <section className="bg-zinc-100 w-full items-center flex flex-col py-10">
