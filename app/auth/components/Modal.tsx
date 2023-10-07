@@ -54,6 +54,7 @@ export default function Modal({ closeModal, text }: ModalProps) {
           type="button"
           onClick={closeModal}
           className="bg-[#FFC000] w-full h-8 sm:h-11 rounded-lg"
+          autoFocus
         >
           확인
         </button>
