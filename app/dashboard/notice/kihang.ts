@@ -1,8 +1,4 @@
-'use client';
-
-import { useState } from 'react';
-
-async function toWAV(blob: Blob): Promise<Blob> {
+export async function toWAV(blob: Blob): Promise<Blob> {
   return new Promise<Blob>((resolve, reject) => {
     const reader = new FileReader();
 
@@ -29,7 +25,7 @@ async function toWAV(blob: Blob): Promise<Blob> {
       };
 
       mediaRecorder.onstop = () => {
-        const wavBlob = new Blob(chunks, { type: 'audio/wav' });
+        const wavBlob = new Blob(chunks, { type: "audio/wav" });
         resolve(wavBlob);
       };
 
@@ -49,43 +45,7 @@ async function toWAV(blob: Blob): Promise<Blob> {
     reader.readAsArrayBuffer(blob);
   });
 }
-// function get5PerMin(wav: number) {
-//   return 26000;
-// }
 
-// // server 요청
-// function sendNoti() {
-
-// }
-
-export default function Notice() {
-  const [ticks, setTicks] = useState<number[]>([]);
-
-  async function record() {
-    console.log('record start');
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
-    const mediaRecorder = new MediaRecorder(stream);
-    mediaRecorder.ondataavailable = async (event) => {
-      const blob = event.data;
-      const wav = await toWAV(blob);
-      console.log('wav:', wav);
-      // const tick = get5PerMin(wav);
-
-      // setTicks([...ticks, tick]);
-      // const isCheck = tick > 25000;
-      // if (isCheck) {
-      //   sendNoti();
-      // }
-    };
-    mediaRecorder.start(1000);
-  }
-  return (
-    <p>
-      <button onClick={record} type="button">
-        감지 시작
-      </button>
-      graph
-    </p>
-  );
+export function get5PerMin(wav: Blob) {
+  return 26000;
 }

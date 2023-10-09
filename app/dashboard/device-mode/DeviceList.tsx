@@ -43,7 +43,7 @@ export default function Modal() {
           </h1>
           <p className="text-sm">현재 기기가 아래 기기 중 하나인 경우만 선택해주세요!</p>
         </div>
-        <Link href="?modal=false" className="inline-flex items-center justify-center w-8 h-8 ml-auto text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white">
+        <Link href="?" className="inline-flex items-center justify-center w-8 h-8 ml-auto text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white">
           <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
           </svg>
@@ -82,9 +82,9 @@ export default function Modal() {
         </ul>
       </section>
       <section className="grid grid-cols-2 gap-2 p-4 font-semibold">
-        <button type="button" className="p-2 text-xs bg-white border rounded-md">
+        <Link href="?modal=add" className="p-2 text-xs bg-white border rounded-md">
           아니요, 새 기기로 등록할래요
-        </button>
+        </Link>
         <button type="button" className="btn-primary lg:text-xs">
           네, 이 기존 기기로 등록할래요.
         </button>

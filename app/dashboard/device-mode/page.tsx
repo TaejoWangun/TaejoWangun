@@ -2,18 +2,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Modal from './Modal';
 import DeviceList from './DeviceList';
+import AddDevice from './AddDevice';
 
 type Props = {
   searchParams: Record<string, string> | null | undefined
 };
 export default function DeviceMode({ searchParams }: Props) {
-  const showModal = searchParams?.modal === 'true';
-  console.log('DeviceMode rendered');
   return (
     <>
-      {showModal && (
+      {searchParams?.modal === 'list' && (
       <Modal>
         <DeviceList />
+      </Modal>
+      )}
+      {searchParams?.modal === 'add' && (
+      <Modal>
+        <AddDevice />
       </Modal>
       )}
       <div className="p-3 sm:p-7">
@@ -25,7 +29,7 @@ export default function DeviceMode({ searchParams }: Props) {
               기기를 등록하지 않아도 알림 내역은 확인 가능합니다.
             </p>
             <div className="shrink-0">
-              <Link href="?modal=true" className="btn-primary">
+              <Link href="?modal=list" className="btn-primary">
                 + 현재 기기 추가
               </Link>
             </div>
@@ -95,7 +99,6 @@ export default function DeviceMode({ searchParams }: Props) {
               </div>
             </li>
           </ol>
-
         </section>
       </div>
     </>
