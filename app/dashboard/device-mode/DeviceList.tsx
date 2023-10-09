@@ -1,8 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import ModalItem from './ModalItem';
+import { useState } from 'react';
 
-const data = [
+type Data = {
+  id: number
+  name: string
+  type: string
+};
+
+const data: Data[] = [
   {
     id: 0,
     name: 'Hansung PC',
@@ -21,6 +29,8 @@ const data = [
 ];
 
 export default function Modal() {
+  const [checked, setChecked] = useState<Data>(data[0]);
+
   return (
     <>
       <section className="flex items-start justify-between p-4 rounded-t">
@@ -43,22 +53,39 @@ export default function Modal() {
       <section className="px-4">
         <ul className="flex flex-col gap-1">
           {
-                data.map((e) => (
-                  <ModalItem
-                    checked={e.id}
-                    id={e.id}
-                    name={e.name}
-                    type={e.type}
-                  />
-                ))
-              }
+            data.map((e) => (
+              <li
+                key={e.id}
+                onClick={() => setChecked(e)}
+              >
+                <div className={`flex items-center gap-2 p-3 border rounded-md ${checked.id === e.id ? 'bg-[#FFF4D3] border-main border-2' : ''}`}>
+                  <div className="rounded-full border-[#FFF1C7] border-4 bg-[#FFE69B] w-8 h-8 flex justify-center">
+                    <Image src="/images/credit_card_refresh.svg" width={15} height={15} alt="card" />
+                  </div>
+                  <div className="flex justify-between text-sm grow text-letter">
+                    <div>
+                      <h2>{e.name}</h2>
+                      <p>{e.type}</p>
+                    </div>
+                    <div>
+                      {
+                        checked.id === e.id
+                          ? <Image src="/images/checkbox_checked.svg" width={15} height={15} alt="card" />
+                          : <Image src="/images/checkbox.svg" width={15} height={15} alt="card" />
+                      }
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
         </ul>
       </section>
       <section className="grid grid-cols-2 gap-2 p-4 font-semibold">
         <button type="button" className="p-2 text-xs bg-white border rounded-md">
           아니요, 새 기기로 등록할래요
         </button>
-        <button type="button" className="btn-primary">
+        <button type="button" className="btn-primary lg:text-xs">
           네, 이 기존 기기로 등록할래요.
         </button>
       </section>
