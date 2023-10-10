@@ -9,6 +9,7 @@ import Description from '../components/Description';
 import Button from '../components/Button';
 import Modal from '../components/Modal';
 import { signIn } from '../../api/auth/auth';
+import OAuthButton from '../components/OAuthButton';
 
 export default function SignIn() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -135,12 +136,18 @@ export default function SignIn() {
 
       </form>
 
+      <div className="border-t w-[300px] sm:w-[580px] mb-2 sm:mb-4 pt-6 sm:pt-10">
+        <OAuthButton text="구글로 로그인" logo="/images/google_logo.svg" address="googlelogin" alt="구글 로고 이미지" />
+        <OAuthButton text="카카오로 로그인" logo="/images/kakao_logo.svg" address="kakaologin" alt="카카오 로고 이미지" />
+        <OAuthButton text="네이버로 로그인" logo="/images/naver_logo.svg" address="naverlogin" alt="네이버 로고 이미지" />
+      </div>
+
       <span className="font-medium text-sm sm:text-xl pt-6 sm:pt-10 mb-4 border-t w-[300px] sm:w-[580px] text-center">
         계정이 없으신가요?
       </span>
       <Link
         href="signup"
-        className="w-[300px] sm:w-[580px] h-10 sm:h-16 rounded-full font-medium text-sm sm:text-xl mb-10 border border-black text-center leading-10 sm:leading-[60px]"
+        className="w-[300px] sm:w-[580px] h-10 sm:h-16 rounded-full font-medium text-sm sm:text-xl border mb-10 border-black text-center leading-10 sm:leading-[60px]"
       >
         회원가입
       </Link>
