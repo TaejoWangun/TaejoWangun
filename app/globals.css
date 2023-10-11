@@ -23,3 +23,14 @@
 body :has(.open-modal) {
   overflow: hidden;
 }
+
+.arrow {
+  position: relative;
+}
+.arrow::after {
+  content: "▼";
+    font-size: 1rem;
+    top: 6px;
+    right: 10px;
+    position: absolute;
+}

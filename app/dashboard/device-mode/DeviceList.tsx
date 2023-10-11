@@ -35,13 +35,15 @@ export default function Modal() {
     <>
       <section className="flex items-start justify-between p-4 rounded-t">
         <div>
-          <div className="w-8 h-8 p-2 border rounded-md">
-            <Image src="/images/credit_card_refresh.svg" width={15} height={15} alt="card" />
+          <div className="flex items-center justify-center w-12 h-12 border rounded-md">
+            <div className="relative w-6 h-6 grow">
+              <Image src="/images/credit_card_refresh.svg" alt="card" fill />
+            </div>
           </div>
-          <h1 className="pt-2 text-lg font-semibold text-gray-900">
+          <h1 className="pt-4 text-base font-semibold text-gray-900">
             혹시 기존에 등록하셨던 기기인가요?
           </h1>
-          <p className="text-sm">현재 기기가 아래 기기 중 하나인 경우만 선택해주세요!</p>
+          <p className="text-xs">현재 기기가 아래 기기 중 하나인 경우만 선택해주세요!</p>
         </div>
         <Link href="?" className="inline-flex items-center justify-center w-8 h-8 ml-auto text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white">
           <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -81,11 +83,11 @@ export default function Modal() {
           }
         </ul>
       </section>
-      <section className="grid grid-cols-2 gap-2 p-4 font-semibold">
-        <Link href="?modal=add" className="p-2 text-xs bg-white border rounded-md">
+      <section className="grid grid-cols-2 gap-2 p-4 pt-6 font-semibold">
+        <Link href="?modal=add" className="p-2 text-xs text-center bg-white border rounded-md">
           아니요, 새 기기로 등록할래요
         </Link>
-        <button type="button" className="btn-primary lg:text-xs">
+        <button type="button" className="px-1 py-2 text-xs font-bold rounded bg-main sm:px-3 text-letter">
           네, 이 기존 기기로 등록할래요.
         </button>
       </section>

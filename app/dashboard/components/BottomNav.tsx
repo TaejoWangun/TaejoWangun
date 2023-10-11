@@ -33,9 +33,11 @@ export default function BottomNav({ className }: { className: string }) {
   const pathname = usePathname();
 
   return (
-    <nav className={`${className} bg-[#e5f0f1] text-[#9db2ce] flex h-16`}>
-      <ul className="grow flex justify-center gap-4 text-sm">
-        {
+    <>
+      <div className="w-full h-[64px] shrink-0 sm:hidden" />
+      <nav className={`${className} bg-[#e5f0f1] text-[#9db2ce] flex h-16 fixed bottom-0 w-full`}>
+        <ul className="flex justify-center gap-4 text-sm grow">
+          {
           items.map((item) => (
             pathname === item.href
               ? (
@@ -51,7 +53,7 @@ export default function BottomNav({ className }: { className: string }) {
               ) : (
                 <li key={item.label} className="w-16">
                   <Link
-                    className="flex flex-col gap-1 w-full h-full items-center justify-center"
+                    className="flex flex-col items-center justify-center w-full h-full gap-1"
                     href={item.href}
                   >
                     <item.icon width={26} />
@@ -60,7 +62,8 @@ export default function BottomNav({ className }: { className: string }) {
               )
           ))
         }
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </>
   );
 }
