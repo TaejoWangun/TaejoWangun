@@ -50,7 +50,7 @@ export default function Modal() {
         </label>
       </section>
       <section className="grid gap-2 p-4 pt-8 font-semibold">
-        <Link href="?" className="px-1 py-2 text-base font-bold text-center rounded bg-main sm:px-3 text-letter">
+        <Link href="/dashboard/device-mode/notice" className="px-1 py-2 text-base font-bold text-center rounded bg-main sm:px-3 text-letter">
           등록
         </Link>
         <Link href="?" className="p-2 text-base text-center text-gray-700 bg-white border rounded-md">

@@ -29,17 +29,17 @@ const items = [
   },
 ];
 
-export default function BottomNav({ className }: { className: string }) {
+export default function BottomNav() {
   const pathname = usePathname();
 
   return (
     <>
       <div className="w-full h-[64px] shrink-0 sm:hidden" />
-      <nav className={`${className} bg-[#e5f0f1] text-[#9db2ce] flex h-16 fixed bottom-0 w-full`}>
+      <nav className="sm:hidden bg-[#e5f0f1] text-[#9db2ce] flex h-16 fixed bottom-0 w-full">
         <ul className="flex justify-center gap-4 text-sm grow">
           {
           items.map((item) => (
-            pathname === item.href
+            pathname.startsWith(item.href)
               ? (
                 <li key={item.label} className="w-16">
                   <Link
