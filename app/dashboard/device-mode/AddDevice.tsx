@@ -1,9 +1,31 @@
+/* eslint-disable no-console */
+
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { getToken, onMessage } from 'firebase/messaging';
+import messaging from '../../firbase';
 
 export default function Modal() {
+  const handleNoticeTestClick = async () => {
+    const permission = await Notification.requestPermission();
+    if (permission !== 'granted') return;
+
+    const token = await getToken(messaging, { vapidKey: 'BP5aO-r-dkFChjFT2JkmI-D2eR-6pXd2mRejAz93_GSkmVxsoRlYhW-QbwgI9HXh23lvPnSh-ZGbSu_rwisHMEo' });
+    if (token) {
+      // 정상적으로 토큰이 발급되면 콘솔에 출력합니다.
+      console.log(token);
+    } else {
+      throw Error('');
+    }
+
+    // 메세지가 수신되면 역시 콘솔에 출력합니다.
+    onMessage(messaging, (payload) => {
+      console.log('Message received. ', payload);
+    });
+  };
+
   return (
     <>
       <section className="flex items-start justify-between p-4 rounded-t">
@@ -50,6 +72,9 @@ export default function Modal() {
         </label>
       </section>
       <section className="grid gap-2 p-4 pt-8 font-semibold">
+        <button type="button" onClick={handleNoticeTestClick} className="px-1 py-2 text-base font-bold text-center rounded bg-main sm:px-3 text-letter">
+          알림
+        </button>
         <Link href="/dashboard/device-mode/notice" className="px-1 py-2 text-base font-bold text-center rounded bg-main sm:px-3 text-letter">
           등록
         </Link>
