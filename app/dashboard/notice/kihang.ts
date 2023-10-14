@@ -25,7 +25,7 @@ export async function toWAV(blob: Blob): Promise<Blob> {
       };
 
       mediaRecorder.onstop = () => {
-        const wavBlob = new Blob(chunks, { type: "audio/wav" });
+        const wavBlob = new Blob(chunks, { type: 'audio/wav' });
         resolve(wavBlob);
       };
 
