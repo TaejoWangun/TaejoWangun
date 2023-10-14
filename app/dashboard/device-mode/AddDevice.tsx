@@ -15,9 +15,10 @@ export default function Modal() {
     const token = await getToken(messaging, { vapidKey: 'BP5aO-r-dkFChjFT2JkmI-D2eR-6pXd2mRejAz93_GSkmVxsoRlYhW-QbwgI9HXh23lvPnSh-ZGbSu_rwisHMEo' });
     if (token) {
       // 정상적으로 토큰이 발급되면 콘솔에 출력합니다.
+      console.log('issue token');
       console.log(token);
     } else {
-      throw Error('');
+      console.log('no token');
     }
 
     // 메세지가 수신되면 역시 콘솔에 출력합니다.
