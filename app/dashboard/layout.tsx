@@ -7,8 +7,8 @@ export default function MyFormsLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex flex-col justify-between h-screen sm:flex-row sm:justify-normal">
-      <SideNav className="hidden sm:block" />
+    <div className="relative flex flex-col justify-between h-screen sm:flex-row sm:justify-normal">
+      <SideNav />
       {children}
       <BottomNav />
     </div>
