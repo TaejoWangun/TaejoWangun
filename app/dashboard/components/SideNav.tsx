@@ -26,33 +26,36 @@ const items = [
   },
 ];
 
-export default function SideNav({ className }: { className: string }) {
+export default function SideNav() {
   const pathname = usePathname();
 
   return (
-    <nav className={`${className} bg-primary`}>
-      <div className="py-3">
-        <Link href="/dashboard/device-list" className="relative flex w-72 h-16">
-          <Image
-            src="/images/logo_mark.svg"
-            alt="로고"
-            fill
-            priority
-            className="object-contain"
-          />
-        </Link>
-      </div>
-      <ul className="text-white flex flex-col pt-10">
-        {items.map((item) => (
-          <li
-            key={item.label}
-          >
-            <Link href={item.href} className={pathname === item.href ? selectedStyle : linkStyle}>
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <nav className="fixed hidden sm:block h-full bg-primary">
+        <div className="py-3">
+          <Link href="/dashboard/device-list" className="relative flex w-72 h-16">
+            <Image
+              src="/images/logo_mark.svg"
+              alt="로고"
+              fill
+              priority
+              className="object-contain"
+            />
+          </Link>
+        </div>
+        <ul className="text-white flex flex-col pt-10">
+          {items.map((item) => (
+            <li
+              key={item.label}
+            >
+              <Link href={item.href} className={pathname === item.href ? selectedStyle : linkStyle}>
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div className="w-[288px] shrink-0" />
+    </>
   );
 }

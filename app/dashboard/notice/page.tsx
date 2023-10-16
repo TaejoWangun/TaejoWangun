@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { get5PerMin, toWAV } from './kihang';
+// import { useState } from 'react';
+// import { get5PerMin, toWAV } from './kihang';
 
 export default function Notice() {
-  const [ticks, setTicks] = useState<number[]>([]);
+  // const [ticks, setTicks] = useState<number[]>([]);
 
   async function record() {
     // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
