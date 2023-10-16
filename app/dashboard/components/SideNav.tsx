@@ -9,7 +9,7 @@ const selectedStyle = `${linkStyle} bg-[#197785] border-white`;
 
 const items = [
   {
-    label: '기기 모드',
+    label: '홈',
     href: '/dashboard/device-mode',
   },
   {
@@ -21,13 +21,8 @@ const items = [
     href: '/dashboard/device-list',
   },
   {
-    label: '고객센터',
+    label: '세팅',
     href: '/dashboard/cs',
-  },
-  {
-    liStyle: 'pt-10',
-    label: '마이 페이지',
-    href: '/dashboard/my-page',
   },
 ];
 
@@ -42,25 +37,21 @@ export default function SideNav({ className }: { className: string }) {
             src="/images/logo_mark.svg"
             alt="로고"
             fill
+            priority
             className="object-contain"
           />
         </Link>
       </div>
       <ul className="text-white flex flex-col pt-10">
-        {
-          items.map((item) => (
-            <li className={item.liStyle}>
-              <Link href={item.href} className={pathname === item.href ? selectedStyle : linkStyle}>
-                {item.label}
-              </Link>
-            </li>
-          ))
-        }
-        <li className="text-zinc-400 text-sm border-s-8 border-primary hover:text-white py-1">
-          <Link className="px-10" href="/">
-            로그아웃
-          </Link>
-        </li>
+        {items.map((item) => (
+          <li
+            key={item.label}
+          >
+            <Link href={item.href} className={pathname === item.href ? selectedStyle : linkStyle}>
+              {item.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

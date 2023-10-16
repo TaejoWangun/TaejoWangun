@@ -29,17 +29,19 @@ const items = [
   },
 ];
 
-export default function SideNav({ className }: { className: string }) {
+export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className={`${className} bg-[#e5f0f1] text-[#9db2ce] flex h-16`}>
-      <ul className="grow flex justify-center gap-4 text-sm">
-        {
+    <>
+      <div className="w-full h-[64px] shrink-0 sm:hidden" />
+      <nav className="sm:hidden bg-[#e5f0f1] text-[#9db2ce] flex h-16 fixed bottom-0 w-full">
+        <ul className="flex justify-center gap-4 text-sm grow">
+          {
           items.map((item) => (
-            pathname === item.href
+            pathname.startsWith(item.href)
               ? (
-                <li className="w-16">
+                <li key={item.label} className="w-16">
                   <Link
                     className="flex flex-col gap-1 w-full h-full items-center justify-center bg-[#e8ebd9] text-[#ffc000] border-t-4 border-[#ffc000]"
                     href={item.href}
@@ -49,9 +51,9 @@ export default function SideNav({ className }: { className: string }) {
                   </Link>
                 </li>
               ) : (
-                <li className="w-16">
+                <li key={item.label} className="w-16">
                   <Link
-                    className="flex flex-col gap-1 w-full h-full items-center justify-center"
+                    className="flex flex-col items-center justify-center w-full h-full gap-1"
                     href={item.href}
                   >
                     <item.icon width={26} />
@@ -60,7 +62,8 @@ export default function SideNav({ className }: { className: string }) {
               )
           ))
         }
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </>
   );
 }

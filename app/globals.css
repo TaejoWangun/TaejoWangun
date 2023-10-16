@@ -6,7 +6,7 @@
   .w-desktop {
     width: 1280px;
   }
-  
+
   .min-w-desktop {
     min-width: 1280px;
   }
@@ -14,4 +14,23 @@
   .w-tablet {
     width: 640px;
   }
+}
+
+.btn-primary {
+  @apply bg-main rounded py-2 px-1 sm:px-3 text-xs sm:text-lg text-letter font-bold
+}
+
+body :has(.open-modal) {
+  overflow: hidden;
+}
+
+.arrow {
+  position: relative;
+}
+.arrow::after {
+  content: "▼";
+    font-size: 1rem;
+    top: 6px;
+    right: 10px;
+    position: absolute;
 }
