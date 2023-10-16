@@ -47,5 +47,6 @@ export async function toWAV(blob: Blob): Promise<Blob> {
 }
 
 export function get5PerMin(wav: Blob) {
+  console.log(wav);
   return 26000;
 }
