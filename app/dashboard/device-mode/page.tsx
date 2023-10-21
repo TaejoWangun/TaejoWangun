@@ -8,7 +8,6 @@ type Props = {
   searchParams: Record<string, string> | null | undefined
 };
 export default function DeviceMode({ searchParams }: Props) {
-  console.log('appppple');
   return (
     <>
       {searchParams?.modal === 'list' && (
