@@ -1,4 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import {
+  useEffect, useState, useRef, Dispatch, SetStateAction,
+} from 'react';
 import Recorder from './recorder';
 
 interface Recording {
@@ -30,7 +32,12 @@ const initDB = () => {
   };
 };
 
-function useKihang() {
+type RecordingInfo = {
+  data: Blob,
+  point: number,
+};
+
+function useKihang(setRecordinInfo: Dispatch<SetStateAction<RecordingInfo[]>>) {
   useEffect(() => {
     initDB();
   }, []);
@@ -226,6 +233,25 @@ function useKihang() {
       console.log('Failed to retrieve data from IndexedDB:', event);
     };
   };
+
+  const handleStartClick = () => {
+    clearRMSValues(); // Clear the RMS values
+    startCyclicalRecording(); // Start the cyclical recording
+  };
+
+  const handleStopClick = () => {
+    if (recordingInterval) clearTimeout(recordingInterval);
+    if (pauseInterval) clearTimeout(pauseInterval);
+    stopRecording();
+  };
+
+  const handlePauseClick = () => {
+    if (rec?.recording) {
+      rec.stop();
+    } else {
+      rec?.record();
+    }
+  };
   return {
     clearRMSValues,
     startCyclicalRecording,
@@ -236,6 +262,9 @@ function useKihang() {
     recording,
     recordingsListRef,
     recordings,
+    handleStartClick,
+    handleStopClick,
+    handlePauseClick,
   };
 }
 

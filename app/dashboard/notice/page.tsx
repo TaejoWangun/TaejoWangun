@@ -1,48 +1,33 @@
 'use client';
 
+import { useState } from 'react';
 import useKihang from './useKihang';
 
+type RecordingInfo = {
+  data: Blob,
+  point: number,
+};
+
 function AudioRecorder() {
+  const [recordingInfo, setRecordingInfo] = useState<RecordingInfo[]>([]);
+
   const {
-    clearRMSValues,
-    startCyclicalRecording,
-    recordingInterval,
-    pauseInterval,
-    stopRecording,
-    rec,
-    recording,
     recordingsListRef,
     recordings,
-  } = useKihang();
-
-  const handleStartClick = () => {
-    clearRMSValues(); // Clear the RMS values
-    startCyclicalRecording(); // Start the cyclical recording
-  };
-
-  const handleStopClick = () => {
-    if (recordingInterval) clearTimeout(recordingInterval);
-    if (pauseInterval) clearTimeout(pauseInterval);
-    stopRecording();
-  };
-
-  const handlePauseClick = () => {
-    if (rec?.recording) {
-      rec.stop();
-    } else {
-      rec?.record();
-    }
-  };
+    handleStartClick,
+    handleStopClick,
+    handlePauseClick,
+  } = useKihang(setRecordingInfo);
 
   return (
     <div>
-      <button type="button" onClick={handleStartClick} disabled={recording}>
+      <button type="button" onClick={handleStartClick}>
         Start
       </button>
-      <button type="button" onClick={handleStopClick} disabled={!recording}>
+      <button type="button" onClick={handleStopClick}>
         Stop
       </button>
-      <button type="button" onClick={handlePauseClick} disabled={!recording}>
+      <button type="button" onClick={handlePauseClick}>
         Pause
       </button>
       <ul ref={recordingsListRef}>
