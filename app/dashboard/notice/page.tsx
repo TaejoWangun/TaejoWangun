@@ -1,23 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useKihang from './useKihang';
 
 type RecordingInfo = {
-  data: Blob,
-  point: number,
+  data: Blob
+  point: number
 };
 
 function AudioRecorder() {
   const [recordingInfo, setRecordingInfo] = useState<RecordingInfo[]>([]);
 
+  function addRecordingInfo(e: RecordingInfo) {
+    setRecordingInfo([...recordingInfo, e]);
+  }
+
+  useEffect(() => {
+    console.log(recordingInfo, 'result');
+  }, [recordingInfo]);
   const {
     recordingsListRef,
     recordings,
     handleStartClick,
     handleStopClick,
     handlePauseClick,
-  } = useKihang(setRecordingInfo);
+  } = useKihang(addRecordingInfo);
 
   return (
     <div>
