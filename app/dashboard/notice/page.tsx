@@ -32,7 +32,7 @@ interface Recording {
   // ... other properties
 }
 
-const AudioRecorder: React.FC = () => {
+function AudioRecorder() {
   const [recordings, setRecordings] = useState<Recording[]>([]);
   const recordingsListRef = useRef(null);
   const [recording, setRecording] = useState(false);
@@ -256,30 +256,29 @@ const AudioRecorder: React.FC = () => {
 
   return (
     <div>
-      <button onClick={handleStartClick} disabled={recording}>
+      <button type="button" onClick={handleStartClick} disabled={recording}>
         Start
       </button>
-      <button onClick={stopCyclicalRecording} disabled={!recording}>
+      <button type="button" onClick={stopCyclicalRecording} disabled={!recording}>
         Stop
       </button>
-      <button onClick={pauseRecording} disabled={!recording}>
+      <button type="button" onClick={pauseRecording} disabled={!recording}>
         Pause
       </button>
-      {/* Add more UI elements here */}
       <ul ref={recordingsListRef}>
-        {recordings.map((record, index) => {
-          const { audioBlob } = record;
+        {recordings.map(({ audioBlob }) => {
           const url = URL.createObjectURL(audioBlob);
           return (
-            <li key={index}>
-              <audio controls src={url} />
+            <li key={url}>
+              <audio controls src={url}>
+                <track kind="captions" />
+              </audio>
             </li>
           );
         })}
       </ul>
-      {' '}
     </div>
   );
-};
+}
 
 export default AudioRecorder;
