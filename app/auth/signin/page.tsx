@@ -10,6 +10,7 @@ import Button from '../components/Button';
 import Modal from '../components/Modal';
 import { signIn } from '../../api/auth/auth';
 import OAuthButton from '../components/OAuthButton';
+import { googleAuthUrl, naverAuthUrl } from './lib/handleOAuth';
 
 export default function SignIn() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -118,12 +119,12 @@ export default function SignIn() {
 
         <Link
           href="find-password"
-          className="mt-2 ml-auto underline text-xs sm:text-base"
+          className="mt-2 ml-auto text-xs underline sm:text-base"
         >
           아이디/비밀번호 찾기
         </Link>
 
-        <label htmlFor="checkbox" className="ml-2 mb-6 text-xs sm:text-base">
+        <label htmlFor="checkbox" className="mb-6 ml-2 text-xs sm:text-base">
           <input
             type="checkbox"
             id="checkbox"
@@ -137,9 +138,8 @@ export default function SignIn() {
       </form>
 
       <div className="border-t w-[300px] sm:w-[580px] mb-2 sm:mb-4 pt-6 sm:pt-10">
-        <OAuthButton text="구글로 로그인" logo="/images/google_logo.svg" address="googlelogin" alt="구글 로고 이미지" />
-        <OAuthButton text="카카오로 로그인" logo="/images/kakao_logo.svg" address="kakaologin" alt="카카오 로고 이미지" />
-        <OAuthButton text="네이버로 로그인" logo="/images/naver_logo.svg" address="naverlogin" alt="네이버 로고 이미지" />
+        <OAuthButton text="구글로 로그인" logo="/images/google_logo.svg" address={googleAuthUrl} alt="구글 로고 이미지" />
+        <OAuthButton text="네이버로 로그인" logo="/images/naver_logo.svg" address={naverAuthUrl} alt="네이버 로고 이미지" />
       </div>
 
       <span className="font-medium text-sm sm:text-xl pt-6 sm:pt-10 mb-4 border-t w-[300px] sm:w-[580px] text-center">
