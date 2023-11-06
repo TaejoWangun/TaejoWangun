@@ -16,7 +16,7 @@ function AudioRecorder() {
   }
 
   useEffect(() => {
-    console.log(recordingInfo, 'result');
+    console.log(recordingInfo);
   }, [recordingInfo]);
   const {
     recordingsListRef,
