@@ -1,10 +1,10 @@
 'use client';
 
-import Chart from 'chart.js/auto';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import useKihang from '../../notice/useKihang';
+import LineChart from './LineChart';
 
 type RecordingInfo = {
   data: Blob
@@ -12,65 +12,23 @@ type RecordingInfo = {
 };
 
 export default function Notice() {
-  const chartRef = useRef<HTMLCanvasElement | null>(null);
-
-  const [recordingInfo, setRecordingInfo] = useState<RecordingInfo[]>([]);
-
-  const [chart, setChart] = useState<Chart<'line', number[], string> | null>(null);
-
+  const [data, setData] = useState<{ label: string, value: number }[]>([]);
   function addRecordingInfo(e: RecordingInfo) {
-    console.log(chart);
-    if (chart) {
-      chart.data.datasets[0].data.push(e.point);
-      chart.update();
-    }
-    setRecordingInfo([...recordingInfo, e]);
+    const time = new Date();
+    const aData = {
+      label: `${time.getMinutes()}:${time.getSeconds()}`,
+      value: e.point,
+    };
+    setData([...data, aData]);
   }
 
   const {
-    recordingsListRef,
-    recordings,
+    // recordingsListRef,
+    // recordings,
     handleStartClick,
-    handleStopClick,
-    handlePauseClick,
+    // handleStopClick,
+    // handlePauseClick,
   } = useKihang(addRecordingInfo);
-
-  useEffect(() => {
-    if (chartRef.current === null) return () => {};
-    Chart.register();
-    const ctx = chartRef.current;
-    // eslint-disable-next-line no-new
-    const aChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:30'],
-        datasets: [
-          {
-            label: '데시벨 그래프',
-            data: [],
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.5,
-          }, {
-            data: [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05],
-            borderColor: 'red',
-            borderWidth: 1.5,
-            pointStyle: false,
-          },
-        ],
-      },
-      options: {
-        plugins: {
-          legend: {
-            display: false,
-          },
-        },
-      },
-    });
-    setChart(aChart);
-    return () => {
-      aChart.destroy();
-    };
-  }, []);
 
   return (
     <div className="p-3 sm:p-7 grow">
@@ -147,9 +105,7 @@ export default function Notice() {
           </ul>
         </div>
       </section>
-      <section>
-        <canvas ref={chartRef} />
-      </section>
+      <LineChart data={data} />
     </div>
   );
 }
