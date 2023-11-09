@@ -107,7 +107,7 @@ export default function SignUp() {
 
       <Header text="회원가입" />
 
-      <h2 className="text-xs sm:text-base mb-6 sm:mb-10 flex">
+      <h2 className="flex mb-6 text-xs sm:text-base sm:mb-10">
         이미 계정이 있으신가요? &nbsp;
         <Link href="signin" className="text-[#666666]">
           로그인

@@ -83,7 +83,7 @@ export default function Modal() {
           }
         </ul>
       </section>
-      <section className="grid grid-cols-2 gap-2 p-4 pt-6 font-semibold">
+      <section className="p-4 pt-6 font-semibold grid grid-cols-2 gap-2">
         <Link href="?modal=add" className="p-2 text-xs text-center bg-white border rounded-md">
           아니요, 새 기기로 등록할래요
         </Link>

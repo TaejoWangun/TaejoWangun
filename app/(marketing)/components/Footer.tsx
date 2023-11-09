@@ -7,7 +7,7 @@ export default function Footer() {
       <Link href="/" className="p-20">
         <Image src="/images/logo_mark.svg" alt="로고" width={300} height={300} />
       </Link>
-      <p className="text-zinc-200 pb-12">© 2020 - All rights reserved</p>
+      <p className="pb-12 text-zinc-200">© 2020 - All rights reserved</p>
     </footer>
   );
 }

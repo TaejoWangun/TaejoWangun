@@ -4,13 +4,13 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="bg-zinc-100 flex justify-center min-w-desktop">
-      <div className="grow sm:grow-0 w-desktop flex justify-between items-center pt-5 px-5 sm:px-20">
-        <Link href="/" className="relative flex w-40 sm:w-72 h-20">
+    <header className="flex justify-center bg-zinc-100 min-w-desktop">
+      <div className="flex items-center justify-between px-5 pt-5 grow sm:grow-0 w-desktop sm:px-20">
+        <Link href="/" className="relative flex w-40 h-20 sm:w-72">
           <Image src="/images/logo_mark.svg" alt="로고" fill className="object-contain" priority />
         </Link>
         <div>
-          <ul className="hidden sm:flex gap-7 items-center">
+          <ul className="items-center hidden sm:flex gap-7">
             <li>
               <Link className="text-zinc-600 hover:font-black" href="/#introduce">소개</Link>
             </li>
@@ -23,14 +23,14 @@ export default function Header() {
             <li>
               <Link
                 href="/auth/signup"
-                className="bg-amber-400 py-3 px-7 rounded-sm text-sm hover:bg-amber-500"
+                className="py-3 text-sm rounded-sm bg-amber-400 px-7 hover:bg-amber-500"
               >
                 회원가입
               </Link>
             </li>
           </ul>
         </div>
-        <div className="sm:hidden text-xs">
+        <div className="text-xs sm:hidden">
           <Bars3Icon />
           Menu
         </div>

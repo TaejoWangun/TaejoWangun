@@ -32,7 +32,7 @@ export default function SideNav({ className }: { className: string }) {
   return (
     <nav className={`${className} bg-primary`}>
       <div className="py-3">
-        <Link href="/dashboard/device-list" className="relative flex w-72 h-16">
+        <Link href="/dashboard/device-list" className="relative flex h-16 w-72">
           <Image
             src="/images/logo_mark.svg"
             alt="로고"
@@ -42,7 +42,7 @@ export default function SideNav({ className }: { className: string }) {
           />
         </Link>
       </div>
-      <ul className="text-white flex flex-col pt-10">
+      <ul className="flex flex-col pt-10 text-white">
         {items.map((item) => (
           <li
             key={item.label}

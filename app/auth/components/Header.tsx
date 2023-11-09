@@ -3,5 +3,5 @@ interface HeaderProps {
 }
 
 export default function Header({ text }: HeaderProps) {
-  return <h1 className="text-xl sm:text-3xl font-medium mt-4 mb-2">{text}</h1>;
+  return <h1 className="mt-4 mb-2 text-xl font-medium sm:text-3xl">{text}</h1>;
 }

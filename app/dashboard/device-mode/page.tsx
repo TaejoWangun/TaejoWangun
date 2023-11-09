@@ -42,7 +42,7 @@ export default function DeviceMode({ searchParams }: Props) {
           </div>
           <ol className="px-10 lg:grid lg:grid-cols-3 lg:gap-5 sm:pt-10">
             <li className="flex flex-col pt-5">
-              <div className="px-3 py-5 border rounded-md shadow-md grow">
+              <div className="px-3 py-5 border shadow-md rounded-md grow">
                 <div className="bg-[url(/images/howtouse.png)] bg-center bg-no-repeat h-24 flex justify-center items-center bg-contain">
                   <div className="px-1 py-2 text-xs font-bold rounded bg-main text-letter">+ 현재 기기 추가</div>
                 </div>
@@ -59,7 +59,7 @@ export default function DeviceMode({ searchParams }: Props) {
               </div>
             </li>
             <li className="flex flex-col pt-5">
-              <div className="px-3 py-5 border rounded-md shadow-md grow">
+              <div className="px-3 py-5 border shadow-md rounded-md grow">
                 <div className="bg-[url(/images/howtouse.png)] bg-center bg-no-repeat h-24 flex justify-center items-center bg-contain flex-col">
                   <div className="w-32 font-bold text-main">감지 모드</div>
                   <div>OR</div>
@@ -78,7 +78,7 @@ export default function DeviceMode({ searchParams }: Props) {
               </div>
             </li>
             <li className="flex flex-col pt-5">
-              <div className="px-3 py-5 border rounded-md shadow-md grow">
+              <div className="px-3 py-5 border shadow-md rounded-md grow">
                 <div className="bg-[url(/images/howtouse.png)] bg-center bg-no-repeat h-24 flex justify-center items-center bg-contain">
                   <Image
                     src="/images/record.svg"

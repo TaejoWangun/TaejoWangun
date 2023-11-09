@@ -48,7 +48,7 @@ export default function Modal() {
           <span className="sr-only">Close modal</span>
         </Link>
       </section>
-      <section className="grid gap-4 px-4">
+      <section className="px-4 grid gap-4">
         <label>
           <span className="block text-sm text-gray-700">
             기기 이름*
@@ -72,7 +72,7 @@ export default function Modal() {
           </select>
         </label>
       </section>
-      <section className="grid gap-2 p-4 pt-8 font-semibold">
+      <section className="p-4 pt-8 font-semibold grid gap-2">
         <button type="button" onClick={handleNoticeTestClick} className="px-1 py-2 text-base font-bold text-center rounded bg-main sm:px-3 text-letter">
           알림
         </button>

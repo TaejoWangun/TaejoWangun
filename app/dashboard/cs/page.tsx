@@ -9,7 +9,7 @@ import { CardItems1, CardItems2, CSItems } from './sample/sample';
 
 export default function Cs() {
   return (
-    <div className="w-full px-10 flex flex-col items-center my-10 gap-10">
+    <div className="flex flex-col items-center w-full px-10 my-10 gap-10">
       <CardContainer name="프로필">
         <CardList>
           {CardItems1.map((item) => <CardItem description={item.description} />)}

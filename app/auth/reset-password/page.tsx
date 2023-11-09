@@ -74,7 +74,7 @@ export default function FindPassword() {
         <div className="mb-1 text-xs sm:text-sm ml-1 text-[#2F4858] ">
           새 비밀번호 입력
         </div>
-        <div className="mb-4 flex  relative">
+        <div className="relative flex mb-4 ">
           <input
             className="w-[300px] sm:w-[580px] h-10 sm:h-16 py-2 sm:py-4 px-4 sm:px-6 border rounded-xl text-xs sm:text-base"
             type={isVisible ? 'text' : 'password'}
@@ -107,7 +107,7 @@ export default function FindPassword() {
         <div className="mb-1 text-xs sm:text-sm ml-1 text-[#2F4858] ">
           비밀번호 확인
         </div>
-        <div className="mb-6 flex relative">
+        <div className="relative flex mb-6">
           <input
             className="w-[300px] sm:w-[580px] h-10 sm:h-16 py-2 sm:py-4 px-4 sm:px-6 border rounded-xl text-xs sm:text-base"
             type={isVisibleCh ? 'text' : 'password'}

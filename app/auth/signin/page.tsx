@@ -118,12 +118,12 @@ export default function SignIn() {
 
         <Link
           href="find-password"
-          className="mt-2 ml-auto underline text-xs sm:text-base"
+          className="mt-2 ml-auto text-xs underline sm:text-base"
         >
           아이디/비밀번호 찾기
         </Link>
 
-        <label htmlFor="checkbox" className="ml-2 mb-6 text-xs sm:text-base">
+        <label htmlFor="checkbox" className="mb-6 ml-2 text-xs sm:text-base">
           <input
             type="checkbox"
             id="checkbox"

@@ -36,7 +36,7 @@ export default function BottomNav() {
     <>
       <div className="w-full h-[64px] shrink-0 sm:hidden" />
       <nav className="sm:hidden bg-[#e5f0f1] text-[#9db2ce] flex h-16 fixed bottom-0 w-full">
-        <ul className="flex justify-center gap-4 text-sm grow">
+        <ul className="flex justify-center text-sm gap-4 grow">
           {
           items.map((item) => (
             pathname.startsWith(item.href)

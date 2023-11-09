@@ -6,7 +6,7 @@ interface CSContinerProps {
 export default function CSContainer({ name, children }: CSContinerProps) {
   return (
     <div className="w-full min-w-[300px] rounded-lg border border-gray-300">
-      <div className="font-semibold pl-2 py-1">
+      <div className="py-1 pl-2 font-semibold">
         {name}
       </div>
       {children}

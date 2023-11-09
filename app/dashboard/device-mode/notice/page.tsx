@@ -22,7 +22,7 @@ export default function Notice({ searchParams }: Props) {
           </div>
         </div>
       </section>
-      <section className="grid grid-cols-2 pt-5">
+      <section className="pt-5 grid grid-cols-2">
         <div>
           <div className="flex gap-2">
             <div className="flex items-center justify-center w-8 h-8 bg-green-400 border rounded-md">

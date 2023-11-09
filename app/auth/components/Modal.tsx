@@ -27,9 +27,9 @@ export default function Modal({ closeModal, text }: ModalProps) {
     <div className="z-[9999] fixed flex justify-center items-center bg-[rgb(52,64,84,0.7)] top-0 bottom-0 right-0 left-0">
       <div
         ref={modalRef}
-        className="w-64 sm:w-96 rounded-xl border absolute bg-white p-4 sm:p-6"
+        className="absolute w-64 p-4 bg-white border sm:w-96 rounded-xl sm:p-6"
       >
-        <div className="flex justify-between items-start mb-2 sm:mb-4">
+        <div className="flex items-start justify-between mb-2 sm:mb-4">
           <Image
             src="/images/exclamation_mark.svg"
             alt="느낌표 이미지"
@@ -47,7 +47,7 @@ export default function Modal({ closeModal, text }: ModalProps) {
             />
           </button>
         </div>
-        <h1 className="font-semibold text-base sm:text-lg mb-5 sm:mb-8">
+        <h1 className="mb-5 text-base font-semibold sm:text-lg sm:mb-8">
           {text}
         </h1>
         <button
